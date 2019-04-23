@@ -1,0 +1,52 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.container {
+	margin: 2em auto 0 auto;
+	padding: 2em 0;
+	width: 80%;
+	max-width:600px;
+	border: solid 1px #ccc;
+	text-align: center;
+}
+
+h1 {
+	font-size: 1.25em;
+	margin:0;
+}
+
+form {
+	margin: 1.5em 0;
+}
+
+ul {
+	width: 100%;
+	margin: 0 auto;
+}
+
+li {
+	font-size: 1rem;
+	padding: 1rem 2rem;
+	text-align: left;
+	margin-left: -40px;
+	list-style-type: none;
+	position: relative;
+}
+
+li button {
+	display:none;
+	font-size:.5em;
+	vertical-align: top;
+	padding: 2px 4px;
+	background-color: red;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+}
+li:hover button {
+	display: inline-block;
+	cursor: pointer;
+}
