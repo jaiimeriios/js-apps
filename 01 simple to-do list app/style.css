@@ -3,7 +3,6 @@ body {
 	padding: 0;
 	font-family: sans-serif;
 }
-
 .container {
 	margin: 2em auto 0 auto;
 	padding: 2em 0;
@@ -12,21 +11,17 @@ body {
 	border: solid 1px #ccc;
 	text-align: center;
 }
-
 h1 {
 	font-size: 1.25em;
 	margin:0;
 }
-
 form {
 	margin: 1.5em 0;
 }
-
 ul {
 	width: 100%;
 	margin: 0 auto;
 }
-
 li {
 	font-size: 1rem;
 	padding: 1rem 2rem;
@@ -35,7 +30,6 @@ li {
 	list-style-type: none;
 	position: relative;
 }
-
 li button {
 	display:none;
 	font-size:.5em;
