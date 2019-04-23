@@ -12,5 +12,5 @@ Jaime Alejandro Rios
 
 ## projects
 
-#### :sparkles: Animated Heading
-[View CodePen](https://codepen.io/jaiimeriios/pen/LBRWRx)
+#### :ballot_box_with_check: simple todo list
+[View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ)
