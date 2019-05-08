@@ -16,5 +16,5 @@ Jaime Alejandro Rios
 [View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ)
 
 
-#### :: ajax vanilla js requests
+#### :japanese_goblin: ajax vanilla js requests
 <!-- [View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ) -->
