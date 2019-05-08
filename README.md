@@ -14,3 +14,7 @@ Jaime Alejandro Rios
 
 #### :ballot_box_with_check: simple todo list
 [View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ)
+
+
+#### :: ajax vanilla js requests
+<!-- [View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ) -->
