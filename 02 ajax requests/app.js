@@ -8,7 +8,7 @@ function traerDatos(){
 
 	const xhttp = new XMLHttpRequest()
 
-	xhttp.open('GET', 'ajax1.txt', true)
+	xhttp.open('GET', 'ajax-text.txt', true)
 
 	xhttp.send()
 
