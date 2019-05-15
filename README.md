@@ -18,3 +18,5 @@ Jaime Alejandro Rios
 #### :japanese_goblin: ajax requests
 
 #### :cyclone: ajax JSON request
+
+#### :zap: ajax external api
