@@ -20,3 +20,5 @@ Jaime Alejandro Rios
 #### :cyclone: ajax JSON request
 
 #### :zap: ajax external api
+
+#### :deciduous_tree: event delegation
