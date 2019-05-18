@@ -22,3 +22,5 @@ Jaime Alejandro Rios
 #### :zap: ajax external api
 
 #### :deciduous_tree: event delegation
+
+#### :floppy_disk: local storage
