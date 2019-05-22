@@ -30,40 +30,50 @@ const PintarDB = () => {
 		arrayActividades = [];
 	} else {
 		arrayActividades.forEach(element => {
-			listaActividadesUI.innerHTML +=
-			`
-			<div class="alert alert-warning" role="alert">
-				<i class="material-icons float-left">
-					keyboard_arrow_right
-				</i>
-				<span class="font-weight-bold">${element.actividad}</span> - ${element.estado}
-				<span class="float-right">
-					<i class="material-icons">
-						done
-					</i>
-					<i class="material-icons">
-						delete_forever
-					</i>
-				</span>
-			</div>
-			`
+			listaActividadesUI.innerHTML += `<div class="alert alert-warning" role="alert"><i class="material-icons float-left">keyboard_arrow_right</i><span class="font-weight-bold">${element.actividad}</span> - ${element.estado}<span class="float-right"><i class="material-icons">done</i><i class="material-icons">delete_forever</i></span></div>`
 		})
 	}
 }
+
+const EliminarDB = (actividad) => {
+	let indexArray;
+	arrayActividades.forEach((element, index) => {
+
+		if (element.actividad === actividad) {
+			indexArray = index
+		}
+	})
+
+	arrayActividades.splice(indexArray,1);
+	GuardarDB();
+}
+
 
 
 // eventListeners
 
 formularioUI.addEventListener('submit', (e) => {
-
 	e.preventDefault();
 	let actividadUI = document.querySelector('#actividad').value;
 	CrearTask(actividadUI);
-
 	GuardarDB();
-
 	formularioUI.reset();
 })
 
 document.addEventListener('DOMContentLoaded', PintarDB)
 
+listaActividadesUI.addEventListener('click', (e) => {
+	e.preventDefault()
+
+	if (e.target.innerHTML === 'done' || e.target.innerHTML === 'delete_forever') {
+
+		let text = e.path[2].childNodes[1].innerHTML;
+
+		if (e.target.innerHTML === 'delete_forever') {
+			EliminarDB(text)
+		}
+		if (e.target.innerHTML === 'done') {
+
+		}
+	}
+})
