@@ -10,7 +10,6 @@ const fondo = document.querySelector('#fondo');
 })()
 
 function agregarBotones(e) {
-
 	e.preventDefault()
 	botones.innerHTML =
 		`
@@ -23,7 +22,6 @@ function agregarBotones(e) {
 }
 
 function delegacion(e) {
-
 	e.preventDefault()
 	console.log(e.target.classList[1])
 
@@ -46,6 +44,5 @@ function delegacion(e) {
 		case ('btn-warning'):
 			fondo.className = 'bg-warning'
 			break
-
 	}
 }
