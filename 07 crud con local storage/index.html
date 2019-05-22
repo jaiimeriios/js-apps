@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="CRUD con Local Storage">
 	<title>CRUD con Local Storage</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body id="fondo">
+
+<body>
 
 
-	
+	<div class="container mt-5">
+
+		<h2>
+			<i class="material-icons">list_alt</i>
+			Tasks
+		</h2>
+
+		<form id="formulario">
+			<input type="text" class="form-control my-3" id="actividad">
+			<button type="submit" class="btn btn-primary">Task</button>
+		</form>
+
+		<div id="listaActividades" class="mt-3">
+			<div class="alert alert-warning" role="alert">
+				<i class="material-icons float-left">
+					keyboard_arrow_right
+				</i>
+				<span class="font-weight-bold">Actividad Aqui</span> - estado
+				<span class="float-right">
+					<i class="material-icons">
+						done
+					</i>
+					<i class="material-icons">
+						delete_forever
+					</i>
+				</span>
+			</div>
+		</div>
+
+	</div>
+
 
 	<script src="app.js"></script>
 </body>
+
 </html>
