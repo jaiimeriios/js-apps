@@ -29,22 +29,34 @@ const PintarDB = () => {
 	if (arrayActividades === null) {
 		arrayActividades = [];
 	} else {
+
 		arrayActividades.forEach(element => {
-			listaActividadesUI.innerHTML += `<div class="alert alert-warning" role="alert"><i class="material-icons float-left">keyboard_arrow_right</i><span class="font-weight-bold">${element.actividad}</span> - ${element.estado}<span class="float-right"><i class="material-icons">done</i><i class="material-icons">delete_forever</i></span></div>`
+			
+			if(element.estado == true){
+				listaActividadesUI.innerHTML += `<div class="alert alert-success" role="alert"><i class="material-icons float-left">keyboard_arrow_right</i><span class="font-weight-bold">${element.actividad}</span> - ${element.estado}<span class="float-right"><i class="material-icons">done</i><i class="material-icons">delete_forever</i></span></div>`
+			}else{
+				listaActividadesUI.innerHTML += `<div class="alert alert-warning" role="alert"><i class="material-icons float-left">keyboard_arrow_right</i><span class="font-weight-bold">${element.actividad}</span> - ${element.estado}<span class="float-right"><i class="material-icons">done</i><i class="material-icons">delete_forever</i></span></div>`
+			}
 		})
 	}
+}
+
+const EditarDB = (actividad) => {
+	let indexArray = arrayActividades.findIndex((element) => {
+		return element.actividad === actividad
+	})
+	arrayActividades[indexArray].estado = true;
+	GuardarDB()
 }
 
 const EliminarDB = (actividad) => {
 	let indexArray;
 	arrayActividades.forEach((element, index) => {
-
 		if (element.actividad === actividad) {
 			indexArray = index
 		}
 	})
-
-	arrayActividades.splice(indexArray,1);
+	arrayActividades.splice(indexArray, 1);
 	GuardarDB();
 }
 
@@ -73,7 +85,7 @@ listaActividadesUI.addEventListener('click', (e) => {
 			EliminarDB(text)
 		}
 		if (e.target.innerHTML === 'done') {
-
+			EditarDB(text)
 		}
 	}
 })
