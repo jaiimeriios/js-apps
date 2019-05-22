@@ -24,3 +24,5 @@ Jaime Alejandro Rios
 #### :deciduous_tree: event delegation
 
 #### :floppy_disk: local storage
+
+#### :balloon: CRUD con Local Storage

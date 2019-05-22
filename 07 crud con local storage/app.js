@@ -5,7 +5,6 @@ const formularioUI = document.querySelector('#formulario');
 const listaActividadesUI = document.querySelector('#listaActividades');
 let arrayActividades = [];
 
-
 // funciones
 const CrearTask = (actividad) => {
 	let item = {
@@ -56,7 +55,6 @@ const EliminarDB = (actividad) => {
 	arrayActividades.splice(indexArray, 1);
 	GuardarDB();
 }
-
 
 // eventListeners
 formularioUI.addEventListener('submit', (e) => {
