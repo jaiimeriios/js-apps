@@ -31,7 +31,7 @@ const filtrar = () => {
 	if (resultado.innerHTML === '') {
 		resultado.innerHTML +=
 			`
-			<li>Producto no encontrado
+			<li>Producto no encontrado</li>
 			`
 	}
 }
