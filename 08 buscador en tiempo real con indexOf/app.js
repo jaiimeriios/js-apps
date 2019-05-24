@@ -12,7 +12,6 @@ const formulario = document.querySelector('#formulario');
 const boton = document.querySelector('#boton');
 const resultado = document.querySelector('#resultado');
 
-
 const filtrar = () => {
 
 	resultado.innerHTML = '';
@@ -22,17 +21,13 @@ const filtrar = () => {
 	for (let producto of productos) {
 		let nombre = producto.nombre.toLocaleLowerCase();
 		if (nombre.indexOf(text) !== -1) {
-			resultado.innerHTML +=
-				`
-				<li>${producto.nombre} - Valor ${producto.valor}</li<
-				`
+			resultado.innerHTML += 
+				`<li>${producto.nombre} - Valor ${producto.valor}</li>`
 		}
 	}
 	if (resultado.innerHTML === '') {
 		resultado.innerHTML +=
-			`
-			<li>Producto no encontrado</li>
-			`
+			`<li>Producto no encontrado</li>`
 	}
 }
 
