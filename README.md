@@ -26,3 +26,5 @@ Jaime Alejandro Rios
 #### :floppy_disk: local storage
 
 #### :balloon: CRUD con Local Storage
+
+#### :ear_of_rice: buscador con indexOf
