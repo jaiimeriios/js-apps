@@ -28,3 +28,5 @@ Jaime Alejandro Rios
 #### :balloon: CRUD con Local Storage
 
 #### :ear_of_rice: buscador con indexOf
+
+#### :hourglass: meditation app
