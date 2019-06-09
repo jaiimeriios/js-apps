@@ -19,7 +19,6 @@ video {
 	z-index: -10;
 }
 
-
 .player-container {
 	position: relative;
 	height: 40%;
@@ -46,21 +45,11 @@ video {
 	transition: all 0.2s ease-in-out;
 }
 .time-display {
-	color: white;
+	color: #6994c3;
 	position: absolute;
 	font-size: 3em;
 	bottom: 10%;
 }
-
-
-
-
-
-
-
-
-
-
 
 .time-select,
 .sound-picker {
@@ -72,14 +61,14 @@ video {
 }
 .time-select button,
 .sound-picker button {
-	color: white;
+	color: #7b7b7b;
 	width: 20%;
 	height: 10%;
 	background: none;
-	font-size: 20px;
+	font-size: 1.25em;
 	border-radius: 5px;
 	cursor: pointer;
-	border: 2px solid white;
+	border: 2px solid#7b7b7b;
 	transition: all 0.5s ease;
 }
 
