@@ -32,7 +32,6 @@ sounds.forEach(sounds => {
 	})
 })
 
-
 // select time
 timeSelect.forEach(option => {
 	option.addEventListener("click", function () {
@@ -56,7 +55,6 @@ const checkPlaying = song => {
 	}
 };
 
-
 // check time, animate circle & time text
 song.ontimeupdate = () => {
 	let currentTime = song.currentTime;
@@ -75,5 +73,4 @@ song.ontimeupdate = () => {
 		song.src = 'svg/play.svg';
 		video.pause();
 	}
-
 }
