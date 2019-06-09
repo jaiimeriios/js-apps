@@ -25,7 +25,7 @@ play.addEventListener("click", function () {
 
 // picked different sound
 sounds.forEach(sounds => {
-	sounds.addEventListener('click', function(){
+	sounds.addEventListener('click', function () {
 		song.src = this.getAttribute('data-sound');
 		video.src = this.getAttribute('data-video');
 		checkPlaying(song);
@@ -67,7 +67,7 @@ song.ontimeupdate = () => {
 
 	timeDisplay.textContent = `${minutes}:${seconds}`
 
-	if(currentTime > fakeDuration) {
+	if (currentTime > fakeDuration) {
 		song.pause();
 		song.currentTime = 0;
 		song.src = 'svg/play.svg';
