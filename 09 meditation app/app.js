@@ -57,6 +57,7 @@ const checkPlaying = song => {
 
 // check time, animate circle & time text
 song.ontimeupdate = () => {
+	
 	let currentTime = song.currentTime;
 	let elapsedTime = fakeDuration - currentTime;
 	let seconds = Math.floor(elapsedTime % 60);
