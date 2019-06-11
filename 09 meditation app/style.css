@@ -41,9 +41,11 @@ video {
 	transform: translate(-50%, -50%) rotate(-90deg);
 	pointer-events: none;
 }
+
 .player-container svg circle {
 	transition: all 0.2s ease-in-out;
 }
+
 .time-display {
 	color: #6994c3;
 	position: absolute;
@@ -59,6 +61,7 @@ video {
 	align-items: center;
 	flex: 1;
 }
+
 .time-select button,
 .sound-picker button {
 	color: #7b7b7b;
@@ -84,12 +87,15 @@ video {
 	padding: 30px;
 	border-radius: 50%;
 }
+
 .sound-picker button:nth-child(1) {
 	background: #4972a1;
 }
+
 .sound-picker button:nth-child(2) {
 	background: #a14f49;
 }
+
 .sound-picker button img {
 	height: 100%;
 }

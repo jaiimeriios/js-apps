@@ -31,3 +31,5 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 #### :ear_of_rice: buscador con indexOf
 
 #### :hourglass: meditation app
+
+#### :zap: Task App con Local Storage
