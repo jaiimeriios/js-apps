@@ -32,4 +32,4 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 
 #### :hourglass: meditation app
 
-#### :zap: Task App con Local Storage
+#### :zap: task app con Local Storage
