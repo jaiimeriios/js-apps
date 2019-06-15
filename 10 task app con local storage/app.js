@@ -1,23 +1,58 @@
 // Task App con Local Storage
 
 let formTask = document.querySelector('#formTask');
-let title = document.querySelector('#title');
-let description = document.querySelector('#description');
 
 formTask.addEventListener('submit', saveTask);
 
 function saveTask(e) {
 	e.preventDefault();
-	
+
+	let title = document.querySelector('#title').value;
+	let description = document.querySelector('#description').value;
+
 	const task = {
 		title,
 		description
 	}
 
-	localStorage.setItem('task', JSON.stringify(task));
-	JSON.parse(localStorage.getItem('task'));
-	console.log(localStorage.getItem('task'))
-
-
-	// console.log(e);
+	if (localStorage.getItem('tasks') === null) {
+		let tasks = [];
+		tasks.push(task);
+		localStorage.setItem('tasks', JSON.stringify(tasks));
+	} else {
+		let tasks = JSON.parse(localStorage.getItem('tasks'));
+		tasks.push(task);
+		localStorage.setItem('tasks', JSON.stringify(tasks));
+	}
+	getTask();
 }
+
+
+function getTask() {
+
+	let tasks = JSON.parse(localStorage.getItem('tasks'));
+	let taskView = document.querySelector('#tasks');
+
+	taskView.innerHTML = '';
+
+	for (let i = 0; i < tasks.length; i++) {
+
+		let title = tasks[i].title;
+		let description = tasks[i].description;
+
+		listItem = `
+		<div class="card my-3">
+			<div class="card-body">
+				<h4>${title}</h4>
+				<p>${description}</p>
+				<a class="btn btn-danger">delete</a>
+			</div>
+		</div>`
+		taskView.insertAdjacentHTML('afterbegin', listItem);
+	}
+
+	title.value = '';
+	description.value = '';
+}
+
+getTask();
