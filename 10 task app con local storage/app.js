@@ -1,7 +1,6 @@
 // Task App con Local Storage
 
 let formTask = document.querySelector('#formTask');
-
 formTask.addEventListener('submit', saveTask);
 
 function saveTask(e) {
@@ -9,6 +8,11 @@ function saveTask(e) {
 
 	let title = document.querySelector('#title').value;
 	let description = document.querySelector('#description').value;
+
+	if (title == '') {
+		inputEmpty();
+		return false;
+	}
 
 	const task = {
 		title,
@@ -25,8 +29,15 @@ function saveTask(e) {
 		localStorage.setItem('tasks', JSON.stringify(tasks));
 	}
 	getTask();
+	formTask.reset();
 }
 
+// empty field
+function inputEmpty() {
+	console.log('empty');
+}
+
+// get task from localStorage to DOM
 function getTask() {
 	let tasks = JSON.parse(localStorage.getItem('tasks'));
 	let taskView = document.querySelector('#tasks');
@@ -48,20 +59,19 @@ function getTask() {
 		</div>`
 		taskView.insertAdjacentHTML('afterbegin', listItem);
 	}
-
-	title.value = '';
-	description.value = '';
 }
 
+// delete task
 function deleteTask(title) {
 	let tasks = JSON.parse(localStorage.getItem('tasks'));
 
 	for (let i = 0; i < tasks.length; i++) {
-		if(tasks[i].title == title){
+		if (tasks[i].title == title) {
 			tasks.splice(i, 1);
 		}
 	}
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+	getTask();
 }
 
 getTask();
-
