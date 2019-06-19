@@ -33,3 +33,5 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 #### :hourglass: meditation app
 
 #### :zap: task app con local storage
+
+#### :sun_with_face: weather app
