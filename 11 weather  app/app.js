@@ -15,15 +15,17 @@ window.addEventListener('load', () => {
 			long = position.coords.longitude;
 			lat = position.coords.latitude;
 
-			const api = `https://api.darksky.net/forecast/3ed2820bdef835d0923968060af681dd/${lat},${long}`;
+			const proxy = 'https://cors-anywhere.herokuapp.com/'
+			const api = `${proxy}https://api.darksky.net/forecast/3ed2820bdef835d0923968060af681dd/${lat},${long}`;
 
+			fetch(api)
+				.then(response => {
+					return response.JSON();
+				})
+				.then(data => {
+					console.log(data)
+				})
 		});
 
-
-		fetch(api)
-
 	}
-
-	
-
 })
