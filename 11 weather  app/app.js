@@ -30,11 +30,7 @@
 				})
 				.then(data => {
 					console.log(data)
-					const {
-						temperature,
-						summary,
-						icon
-					} = data.currently;
+					const {temperature, summary, icon} = data.currently;
 
 					// set DOM elements from API
 					locationTimezone.textContent = data.timezone;
@@ -67,7 +63,7 @@
 		});
 		const currentIcon = icon.replace(/-/g, "_").toUpperCase();
 		skycons.play();
-		return skycons.set(iconID, Skycons[currentIcon])
+		return skycons.set(iconID, Skycons[currentIcon]);
 	}
 
 })();
