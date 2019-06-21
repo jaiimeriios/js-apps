@@ -7,7 +7,7 @@
 
 
 (function () {
-	
+
 	let long;
 	let lat;
 
@@ -32,7 +32,11 @@
 				.then(data => {
 					console.log(data)
 					const {temperature, summary} = data.currently;
+					
 					// set DOM elements from API
+					locationTimezone.textContent = data.timezone;
+					temperatureDegree.textContent = temperature;
+					temperatureDescription.textContent = summary;
 				})
 		});
 
