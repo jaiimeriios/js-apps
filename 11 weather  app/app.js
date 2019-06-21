@@ -31,15 +31,25 @@
 				})
 				.then(data => {
 					console.log(data)
-					const {temperature, summary} = data.currently;
+					const {temperature, summary, icon} = data.currently;
 					
 					// set DOM elements from API
 					locationTimezone.textContent = data.timezone;
 					temperatureDegree.textContent = temperature;
 					temperatureDescription.textContent = summary;
+					
+					// set icons
+					setIcons(icon, document.querySelector('.icon'));
 				})
 		});
 
+	}
+
+	function setIcons(icon, iconID){
+		const skycons = new Skycons({color: "white"});
+		const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+		skycons.play();
+		return skycons.set(iconID, Skycons[currentIcon])
 	}
 
 })();
