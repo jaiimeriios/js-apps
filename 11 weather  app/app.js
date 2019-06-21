@@ -3,10 +3,17 @@
 // cihivisaz@daymail.life
 // Qwer1234!
 
+// window.addEventListener('load', () => {   })
 
-window.addEventListener('load', () => {
+
+(function () {
+	
 	let long;
 	let lat;
+
+	let locationTimezone = document.querySelector('.location-timezone');
+	let	temperatureDegree = document.querySelector('.temperature-degree');
+	let	temperatureDescription = document.querySelector('.temperature-description');
 
 	if (navigator.geolocation) {
 
@@ -24,8 +31,11 @@ window.addEventListener('load', () => {
 				})
 				.then(data => {
 					console.log(data)
+					const {temperature, summary} = data.currently;
+					// set DOM elements from API
 				})
 		});
 
 	}
-})
+
+})();
