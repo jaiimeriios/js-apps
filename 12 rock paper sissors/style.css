@@ -3,6 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 body {
 	width: 100%;
 	height: 100vh;
@@ -10,7 +11,29 @@ body {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+	background: linear-gradient(rgb(39, 41, 68), rgb(48, 62, 143));
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #fff;
+}
+
+section {
+	height: 100vh;
+}
+
+.score {
+	color: #fff;
+	height: 20vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.score h2 {
+	font-size: 1.5rem;
+}
+
+.score p {
+	font-size: 1rem;
+	padding: .75rem;
+	text-align: center;
 }
