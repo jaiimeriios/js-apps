@@ -1,4 +1,4 @@
-// rock paper sissors
+// rock paper scissors
 
 
 console.log('asdf');
