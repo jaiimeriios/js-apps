@@ -5,7 +5,7 @@ const game = () => {
 	let cScore = 0;
 
 	const startGame = () => {
-		
+
 	}
 
 
