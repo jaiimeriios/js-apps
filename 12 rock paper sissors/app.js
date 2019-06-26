@@ -18,12 +18,28 @@ const game = () => {
 
 	// play match
 	const playMatch = () =>{
-		
+		const computerHand =  document.querySelector('.player-hand');
+		const playerHand =  document.querySelector('.computer-hand');
+		const options = document.querySelectorAll('.options button');
+
+		// computer random number
+		const computerOptions = ['rock', 'paper', 'scissors'];
+
+		options.forEach((option) =>{
+			option.addEventListener('click', function(){
+				const computerNumber = Math.floor(Math.random() * 3);
+				const computerChoise = computerOptions[computerNumber];
+				console.log(computerChoise);
+			})
+		})
+
+
 	}
 
 
 	// call inner functions
 	startGame();
+	playMatch();
 }
 
 game();
