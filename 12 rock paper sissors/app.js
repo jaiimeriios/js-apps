@@ -4,7 +4,7 @@ const game = () => {
 	let pScore = 0;
 	let cScore = 0;
 
-	// statr game
+	// start game
 	const startGame = () => {
 		const introScreen = document.querySelector('.intro');
 		const playBtn = document.querySelector('.intro button');
@@ -18,8 +18,8 @@ const game = () => {
 
 	// play match
 	const playMatch = () => {
-		const computerHand = document.querySelector('.player-hand');
-		const playerHand = document.querySelector('.computer-hand');
+		const computerHand = document.querySelector('.computer-hand');
+		const playerHand = document.querySelector('.player-hand');
 		const options = document.querySelectorAll('.options button');
 
 		// computer random number
@@ -30,6 +30,7 @@ const game = () => {
 				// computer random choise
 				const computerNumber = Math.floor(Math.random() * 3);
 				const computerChoise = computerOptions[computerNumber];
+				
 				//compare hands
 				compareHands(this.textContent, computerChoise);
 
@@ -39,7 +40,6 @@ const game = () => {
 			})
 		})
 	}
-
 
 	const compareHands = (playerChoise, computerChoise) => {
 		const winner = document.querySelector('.winner');
@@ -53,32 +53,51 @@ const game = () => {
 		if (playerChoise === 'rock') {
 			if (computerChoise === 'scissors') {
 				winner.textContent = 'Player Wins!'
+				pScore++;
+				updateScore();
 				return;
 			} else {
 				winner.textContent = 'Computer Wins';
+				cScore++;
+				updateScore();
 				return;
 			}
 		}
 		// check for paper
 		if (playerChoise === 'paper') {
-			if (computerChoise === 'scissors') {
-				winner.textContent = 'Computer Wins!'
+			if (computerChoise === 'rock') {
+				winner.textContent = 'Player Wins!'
+				pScore++;
+				updateScore();
 				return;
 			} else {
-				winner.textContent = 'Player Wins';
+				winner.textContent = 'Computer Wins';
+				cScore++;
+				updateScore();
 				return;
 			}
 		}
 		// check for scissors
-		if (playerChoise === 'paper') {
-			if (computerChoise === 'rock') {
-				winner.textContent = 'Computer Wins!'
+		if (playerChoise === 'scissors') {
+			if (computerChoise === 'paper') {
+				winner.textContent = 'Player Wins!'
+				pScore++;
+				updateScore();
 				return;
 			} else {
-				winner.textContent = 'Player Wins';
+				winner.textContent = 'Computer Wins';
+				cScore++;
+				updateScore();
 				return;
 			}
 		}
+	}
+
+	const updateScore = () => {
+		const playerScore = document.querySelector('.player-score p');
+		const computerScore = document.querySelector('.computer-score p');
+		playerScore.textContent = pScore;
+		computerScore.textContent = cScore;
 	}
 
 
