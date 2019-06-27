@@ -6,12 +6,12 @@
 
 *::selection {
 	color: #fff;
-	background: #33257e;
+	background: #3a78d8;
 }
 
 *::-moz-selection {
 	color: #fff;
-	background: #33257e;
+	background: #3a78d8;
 }
 
 body {
@@ -69,5 +69,62 @@ header h1 .material-icons {
 }
 
 .container form.app .col {
-	width: 50%;
+	flex: 1;
+}
+
+.container form.app label {
+	line-height: 35px;
+}
+
+.container form.app input {
+	text-align: center;
+	border: none;
+}
+
+.container form.app .btn {
+	width: 100%;
+	height: 35px;
+	color: #fff;
+	border: none;
+	vertical-align: top;
+	font-size: 16px;
+	text-align: center;
+	background: #4721dc;
+	border-radius: 4px;
+	display: inline-block;
+	cursor: pointer;
+	transition: all .3s ease;
+}
+
+.container form.app .btn:hover {
+	background-color: #3105ff;
+}
+
+.container form.app .btn.false {
+	background-color: #2d0cb1;
+}
+
+.container form.app .numero-caracteres .botones{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.container form.app .numero-caracteres .botones div {
+	width: 100%;
+}
+
+.container form.app .numero-caracteres .botones div:nth-child(1) button {
+	border-radius: 4px 0 0 4px;
+}
+
+.container form.app .numero-caracteres input {
+	width: 100%;
+	height: 35px;
+	cursor: default;
+	color: #fff;
+	background-color: #3105ff;
+}
+.container form.app .numero-caracteres .botones div:nth-child(3) button {
+	border-radius: 0 4px 4px 0;
 }
