@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 	<header>
@@ -21,7 +23,26 @@
 
 	<div class="container">
 		<form action="" class="app" id="app">
-
+			<div class="fila numero-caracteres">
+				<div class="col">
+					<label for="">Character Number</label>
+				</div>
+				<div class="col">
+					<div>
+						<button class="btn" id="btn-menos-uno">
+							<i class="material-icons">remove</i>
+						</button>
+					</div>
+					<div>
+						<input type="text" id="numero-caracteres" readonly value="12">
+					</div>
+					<div>
+						<button class="btn" id="btn-mas-uno">
+							<i class="material-icons">add</i>
+						</button>
+					</div>
+				</div>
+			</div>
 
 		</form>
 	</div>
@@ -29,4 +50,5 @@
 
 	<script src="app.js"></script>
 </body>
+
 </html>
