@@ -25,7 +25,7 @@
 		<form action="" class="app" id="app">
 			<div class="fila numero-caracteres">
 				<div class="col">
-					<label for="">Character Number</label>
+					<label for="numero-caracteres">Character Number</label>
 				</div>
 				<div class="col">
 					<div>
@@ -44,6 +44,57 @@
 				</div>
 			</div>
 
+			<div class="fila simbolos">
+				<div class="col">
+					<label for="simbolos">Symbols?</label>
+				</div>
+				<div class="col">
+					<button class="btn" id="btn-simbolos">
+						<i class="material-icons">check</i>
+					</button>
+				</div>
+			</div>
+
+			<div class="fila numeros">
+				<div class="col">
+					<label for="numeros">Numbers?</label>
+				</div>
+				<div class="col">
+					<button class="btn" id="btn-numeros">
+						<i class="material-icons">check</i>
+					</button>
+				</div>
+			</div>
+
+			<div class="fila mayuscula">
+				<div class="col">
+					<label for="mayuscula">Case Letters?</label>
+				</div>
+				<div class="col">
+					<button class="btn" id="btn-mayuscula">
+						<i class="material-icons">check</i>
+					</button>
+				</div>
+			</div>
+
+			<div class="fila generar">
+				<div class="col">
+					<button class="btn btn-generar" id="btn-generar">Generate
+						<i class="material-icons">lock_open</i>
+					</button>
+				</div>
+				<div class="col">
+					<input type="text" class="input-password" id="input-password" readonly value="generate">
+				</div>
+			</div>
+
+			<div class="fila alerta">
+				<div class="col">
+					<div class="alerta-copiado" id="alerta-copiado">
+						<p><i class="material-icons">file_copy</i>Copied</p>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 
