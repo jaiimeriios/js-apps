@@ -7,20 +7,43 @@
 body {
 	width: 100%;
 	height: 100vh;
-	display: flex;
-	justify-content: center;
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
 	background: linear-gradient(rgb(6, 59, 113), rgb(15, 94, 107));
 }
 
-h1 {
+header {
+	margin: 2rem auto 0 auto;
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+
+header img.psswrd {
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+}
+
+header h1 {
 	font-size: 1.5rem;
 	letter-spacing: 0.1rem;
 	margin: 2rem 0;
+	color: #c4efff;
+    text-shadow: 2px 2px 2px #063565;
 }
 
-h1 .material-icons {
+header h1 .material-icons {
 	position: relative;
 	top: 2px;
+}
+
+.container {
+
+}
+
+.container form.app {
+
 }
