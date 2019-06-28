@@ -1,3 +1,10 @@
 // password generator app
 
-console.log('adsf')
+
+
+
+// document.querySelector('');
+// document.querySelector('');
+// document.querySelector('');
+// document.querySelector('');
+// document.querySelector('');

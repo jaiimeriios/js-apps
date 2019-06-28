@@ -23,7 +23,6 @@ body {
 }
 
 header {
-	margin: 2rem auto 0 auto;
 	width: 90%;
 	max-width: 600px;
 	display: flex;
@@ -34,7 +33,7 @@ header {
 header img.psswrd {
 	width: auto;
 	height: auto;
-	margin: 0 auto;
+	margin: 2rem auto 0 auto;
 }
 
 header h1 {
