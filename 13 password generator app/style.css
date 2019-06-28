@@ -104,7 +104,7 @@ header h1 .material-icons {
 	background-color: #2d0cb1;
 }
 
-.container form.app .numero-caracteres .botones{
+.container form.app .numero-caracteres .botones {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -125,6 +125,52 @@ header h1 .material-icons {
 	color: #fff;
 	background-color: #3105ff;
 }
+
 .container form.app .numero-caracteres .botones div:nth-child(3) button {
 	border-radius: 0 4px 4px 0;
+}
+
+.container form.app .fila.generar {
+	margin: 2rem 0 1rem 0;
+}
+
+.container form.app .fila.generar .col:nth-child(1) {
+	flex: 1;
+
+}
+
+.container form.app .fila.generar .col:nth-child(2) {
+	flex: 2;
+}
+
+.container form.app .fila.generar .btn.btn-generar {
+	width: 100%;
+	height: 35px;
+	font-size: 1rem;
+	padding: 0;
+	line-height: 35px;
+	position: relative;
+}
+
+.container form.app .fila.generar .btn.btn-generar:after {
+	content: '';
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	background-color: #4722dc;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 9px;
+	right: -7px;
+	transition: all .3s ease;
+}
+
+.container form.app .fila.generar .btn.btn-generar:hover:after {
+	background-color: #3105ff;
+}
+
+.container form.app .fila.generar .btn.btn-generar .material-icons {
+	font-size: 1rem;
+	position: relative;
+	top: 1px
 }
