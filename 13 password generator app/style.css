@@ -48,6 +48,7 @@ header h1 {
 header h1 .material-icons {
 	position: relative;
 	top: 2px;
+	font-size: 1.35rem;
 }
 
 .container {
@@ -103,6 +104,26 @@ header h1 .material-icons {
 .container form.app .btn.false {
 	background-color: #2d0cb1;
 }
+
+
+
+
+.container form.app .fila .clear {
+	color: #886af9;
+	display: none;
+	margin: 0 0 0 -26px;
+}
+
+.container form.app .fila .none {
+	display: none;
+}
+
+.container form.app .fila .shown {
+	display: inline;
+	margin: 0 0 0 2px;
+}
+
+
 
 .container form.app .numero-caracteres .botones {
 	display: flex;
@@ -249,12 +270,14 @@ header h1 .material-icons {
 		margin: 0 0 2rem 0;
 		font-size: 1.35rem;
 	}
+
 	.container form.app .fila.generar .btn.btn-generar:after {
 		top: auto;
 		right: 50%;
 		left: 50%;
 		bottom: -7px;
 	}
+
 	.container form.app .fila.generar .input-password {
 		width: 100%;
 		margin: 0;

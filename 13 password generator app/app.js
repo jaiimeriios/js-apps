@@ -20,7 +20,6 @@
 		minusculas: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
 	}
 
-
 	// events -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 	app.addEventListener('submit', function (e) {
@@ -33,23 +32,30 @@
 	})
 
 	app.elements.namedItem('btn-menos-uno').addEventListener('click', function () {
-		if(configuracion.caracteres > 1) {
+		if (configuracion.caracteres > 1) {
 			configuracion.caracteres--;
 			inputCaracteres.value = configuracion.caracteres;
 		}
-		
 	})
 
 
 
+	app.elements.namedItem('btn-simbolos').addEventListener('click', function () {
+
+		let check = document.querySelector('#check');
+		let clear = document.querySelector('#clear');
+
+		this.classList.toggle('false');
+		check.classList.toggle('none');
+		clear.classList.toggle('shown');
+
+		console.log(check, clear)
+
+
+	})
 
 
 
-
-
-	// document.querySelector('');
-	// document.querySelector('');
-	// document.querySelector('');
 
 
 
