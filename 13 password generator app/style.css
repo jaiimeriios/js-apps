@@ -160,7 +160,7 @@ header h1 .material-icons {
 	background-color: #4722dc;
 	transform: rotate(45deg);
 	position: absolute;
-	top: 9px;
+	top: 10px;
 	right: -7px;
 	transition: all .3s ease;
 }

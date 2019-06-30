@@ -2,9 +2,10 @@
 
 (function () {
 
+	// variables and objects -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 	var app = document.querySelector('#app');
 	var inputCaracteres = document.querySelector('#numero-caracteres');
-
 	var configuracion = {
 		caracteres: parseInt(inputCaracteres.value),
 		simbolos: true,
@@ -12,7 +13,6 @@
 		mayusculas: true,
 		minusculas: true
 	}
-
 	var caracteres = {
 		numeros: '0 1 2 3 4 5 6 7 8 9',
 		simbolos: '~ ! @ # $ % ^ & * ( ) _ + - = [ { } ] ; : , < . ? /',
@@ -21,9 +21,29 @@
 	}
 
 
+	// events -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+	app.addEventListener('submit', function (e) {
+		e.preventDefault();
+	})
+
+	app.elements.namedItem('btn-mas-uno').addEventListener('click', function () {
+		configuracion.caracteres++;
+		inputCaracteres.value = configuracion.caracteres;
+	})
+
+	app.elements.namedItem('btn-menos-uno').addEventListener('click', function () {
+		if(configuracion.caracteres > 1) {
+			configuracion.caracteres--;
+			inputCaracteres.value = configuracion.caracteres;
+		}
+		
+	})
 
 
-	console.log(configuracion.caracteres)
+
+
+
 
 
 
