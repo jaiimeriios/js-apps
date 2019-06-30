@@ -41,16 +41,12 @@
 
 
 	app.elements.namedItem('btn-simbolos').addEventListener('click', function () {
-
 		let check = document.querySelector('#check');
 		let clear = document.querySelector('#clear');
 
 		this.classList.toggle('false');
 		check.classList.toggle('none');
 		clear.classList.toggle('shown');
-
-		console.log(check, clear)
-
 
 	})
 
