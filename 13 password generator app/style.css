@@ -106,8 +106,6 @@ header h1 .material-icons {
 }
 
 
-
-
 .container form.app .fila .clear {
 	color: #886af9;
 	display: none;
@@ -119,6 +117,7 @@ header h1 .material-icons {
 }
 
 .container form.app .fila .shown {
+	content: "X";
 	display: inline;
 	margin: 0 0 0 2px;
 }

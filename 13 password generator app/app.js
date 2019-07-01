@@ -37,22 +37,39 @@
 			inputCaracteres.value = configuracion.caracteres;
 		}
 	})
-
-
+	
 
 	app.elements.namedItem('btn-simbolos').addEventListener('click', function () {
-		let check = document.querySelector('#check');
-		let clear = document.querySelector('#clear');
-
-		this.classList.toggle('false');
-		check.classList.toggle('none');
-		clear.classList.toggle('shown');
-
+		btnToggle(this);
+		configuracion.simbolos = !configuracion.simbolos;
+		console.log('simbolos ' + configuracion.simbolos)
 	})
 
+	app.elements.namedItem('btn-numeros').addEventListener('click', function () {
+		btnToggle(this);
+		configuracion.numeros = !configuracion.numeros;
+		console.log('numeros ' + configuracion.numeros)
+	})
+
+	app.elements.namedItem('btn-mayuscula').addEventListener('click', function () {
+		btnToggle(this);
+		configuracion.mayusculas = !configuracion.mayusculas;
+		console.log('mayusculas ' + configuracion.mayusculas)
+	})
+
+	// toggle buttons function
+	let btnToggle = function(elemento){
+		elemento.classList.toggle('false');
+		elemento.childNodes[0].nextElementSibling.classList.toggle('none')
+	}
 
 
 
+
+
+	app.elements.namedItem('btn-generar').addEventListener('click', function(){
+		alert('asdf')
+	})
 
 
 
