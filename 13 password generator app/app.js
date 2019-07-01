@@ -85,7 +85,10 @@
 		for(var i = 0; i < configuracion.caracteres; i++){
 			password += caracteresFinales[Math.floor(Math.random() * caracteresFinales.length)];
 		}
-		console.log(password)
+
+		app.elements.namedItem('input-password').value = password;
+
 	}
 
+	generatePassword();
 }())
