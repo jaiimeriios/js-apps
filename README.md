@@ -13,7 +13,6 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 ## projects
 
 #### :ballot_box_with_check: simple todo list
-
 [View CodePen](https://codepen.io/jaiimeriios/pen/PLzmLJ)
 
 #### :japanese_goblin: ajax requests
@@ -39,3 +38,4 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 #### :video_game: rock paper scissors
 
 #### :lock: password generator
+[View CodePen](https://codepen.io/jaiimeriios/pen/KjQxpP)

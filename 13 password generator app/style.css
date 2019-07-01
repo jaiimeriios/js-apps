@@ -197,6 +197,7 @@ header h1 .material-icons {
 
 .container form.app .fila.generar .input-password {
 	color: #fff;
+	font-size: 1rem;
 	margin: 0 0 0 10%;
 	width: 90%;
 	height: 35px;
@@ -226,13 +227,13 @@ header h1 .material-icons {
 
 .container form.app .fila.alerta .alerta-copiado {
 	text-align: center;
-	font-size: .88rem;
+	font-size: .9rem;
 	color: rgba(255, 255, 255, 0);
 	transition: all .3s ease;
 }
 
 .container form.app .fila.alerta .alerta-copiado.active {
-	color: rgba(255, 255, 255, .75);
+	color: rgba(255, 255, 255, .85);
 }
 
 .container form.app .fila.alerta .alerta-copiado p .material-icons {
