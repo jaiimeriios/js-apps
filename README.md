@@ -37,5 +37,4 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 
 #### :video_game: rock paper scissors
 
-#### :lock: password generator
-[View CodePen](https://codepen.io/jaiimeriios/pen/KjQxpP)
+#### :lock: password generator ####  - [View CodePen](https://codepen.io/jaiimeriios/pen/KjQxpP)
