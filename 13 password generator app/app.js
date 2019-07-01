@@ -38,7 +38,6 @@
 		}
 	})
 
-
 	// button events -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	app.elements.namedItem('btn-simbolos').addEventListener('click', function () {
@@ -65,7 +64,6 @@
 		elemento.childNodes[0].nextElementSibling.classList.toggle('none')
 	}
 
-
 	// generate generatePassword -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	app.elements.namedItem('btn-generar').addEventListener('click', function () {
@@ -77,12 +75,17 @@
 		let password = '';
 
 		for (propiedad in configuracion) {
-
 			if (configuracion[propiedad] == true) {
-				caracteresFinales += caracteres[propiedad]+ ' ';
-				console.log(caracteresFinales)
+				caracteresFinales += caracteres[propiedad] + ' ';
 			}
 		}
+		caracteresFinales = caracteresFinales.trim();
+		caracteresFinales = caracteresFinales.split(' ');
+
+		for(var i = 0; i < configuracion.caracteres; i++){
+			password += caracteresFinales[Math.floor(Math.random() * caracteresFinales.length)];
+		}
+		console.log(password)
 	}
 
 }())
