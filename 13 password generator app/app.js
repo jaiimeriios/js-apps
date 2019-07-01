@@ -1,5 +1,3 @@
-// password generator app
-
 (function () {
 
 	// variables and objects -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -26,12 +24,12 @@
 		e.preventDefault();
 	})
 
-	app.elements.namedItem('btn-mas-uno').addEventListener('click', function () {
+	app.elements.namedItem('btn-mas-uno').addEventListener('click', () => {
 		configuracion.caracteres++;
 		inputCaracteres.value = configuracion.caracteres;
 	})
 
-	app.elements.namedItem('btn-menos-uno').addEventListener('click', function () {
+	app.elements.namedItem('btn-menos-uno').addEventListener('click', () => {
 		if (configuracion.caracteres > 1) {
 			configuracion.caracteres--;
 			inputCaracteres.value = configuracion.caracteres;
@@ -67,7 +65,7 @@
 	// generate generatePassword -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	app.elements.namedItem('btn-generar').addEventListener('click', function () {
-		generatePassword()
+		generatePassword();
 	})
 
 	let generatePassword = () => {
@@ -82,12 +80,25 @@
 		caracteresFinales = caracteresFinales.trim();
 		caracteresFinales = caracteresFinales.split(' ');
 
-		for(var i = 0; i < configuracion.caracteres; i++){
+		for (var i = 0; i < configuracion.caracteres; i++) {
 			password += caracteresFinales[Math.floor(Math.random() * caracteresFinales.length)];
 		}
-
 		app.elements.namedItem('input-password').value = password;
+	}
 
+	// copy password -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+	app.elements.namedItem('input-password').addEventListener('click', () => {
+		copyPassword();
+	})
+
+	let copyPassword = () => {
+		app.elements.namedItem('input-password').select();
+		document.execCommand('copy');
+		document.querySelector('.alerta-copiado').classList.add('active');
+		setTimeout(function () {
+			document.querySelector('.alerta-copiado').classList.remove('active');
+		}, 2000);
 	}
 
 	generatePassword();

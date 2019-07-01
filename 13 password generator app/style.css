@@ -240,9 +240,7 @@ header h1 .material-icons {
 	position: relative;
 	top: 1px;
 	right: 3px;
-	;
 }
-
 
 @media screen and (max-width: 500px) {
 
@@ -282,5 +280,4 @@ header h1 .material-icons {
 		margin: 0;
 		font-size: 1.35rem;
 	}
-
 }
