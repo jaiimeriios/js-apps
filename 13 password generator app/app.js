@@ -20,7 +20,7 @@
 		minusculas: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
 	}
 
-	// events -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	// events =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	app.addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -37,7 +37,9 @@
 			inputCaracteres.value = configuracion.caracteres;
 		}
 	})
-	
+
+
+	// button events -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	app.elements.namedItem('btn-simbolos').addEventListener('click', function () {
 		btnToggle(this);
@@ -58,19 +60,29 @@
 	})
 
 	// toggle buttons function
-	let btnToggle = function(elemento){
+	let btnToggle = (elemento) => {
 		elemento.classList.toggle('false');
 		elemento.childNodes[0].nextElementSibling.classList.toggle('none')
 	}
 
 
+	// generate generatePassword -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-
-
-	app.elements.namedItem('btn-generar').addEventListener('click', function(){
-		alert('asdf')
+	app.elements.namedItem('btn-generar').addEventListener('click', function () {
+		generatePassword()
 	})
 
+	let generatePassword = () => {
+		let caracteresFinales = '';
+		let password = '';
 
+		for (propiedad in configuracion) {
+
+			if (configuracion[propiedad] == true) {
+				caracteresFinales += caracteres[propiedad]+ ' ';
+				console.log(caracteresFinales)
+			}
+		}
+	}
 
 }())
