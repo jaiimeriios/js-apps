@@ -4,7 +4,6 @@
 	box-sizing: border-box;
 }
 
-
 html {
 	text-align: center;
 	font-size: 10px;
@@ -33,7 +32,7 @@ body {
 	border: 20px solid rgba(255, 255, 255, 0.85);
 	box-shadow:
 		0 0 0 4px rgba(0, 0, 0, 0.1),
-		inset 0 0 0 3px rgba(95, 172, 219, 0.755),
+		inset 0 0 0 3px rgba(52, 152, 214, 0.462),
 		inset 0 0 10px rgb(69, 150, 221),
 		0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -50,7 +49,22 @@ body {
 	position: absolute;
 	top: 50%;
 	width: 50%;
-	height: 6px;
 	border-radius: 6px;
-	background-color: black;
+	transform-origin: 100%;
+	transform: rotate(90deg);
+	transition: all 0.05s ease-in-out;
+	background-color: #000;
+}
+
+
+.hour-hand {
+	height: 4px;
+}
+
+.min-hand {
+	height: 3px;
+}
+
+.second-hand {
+	height: 2px;
 }
