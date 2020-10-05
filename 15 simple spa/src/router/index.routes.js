@@ -1,7 +1,7 @@
 import { pages } from '../controllers/index'
 let content = document.querySelector('#root')
 
-const router = (route) => {
+const router = async (route) => {
 
     content.innerHTML = ''
 
@@ -13,7 +13,7 @@ const router = (route) => {
             return content.appendChild(pages.home())
         }
         case '#/posts': {
-            return content.appendChild(pages.posts())
+            return content.appendChild(await pages.posts())
         }
         case '#/products': {
             return content.appendChild(pages.products())
@@ -22,7 +22,6 @@ const router = (route) => {
             return content.appendChild(pages.notFound())
         }
     }
-
 }
 
 export { router }
