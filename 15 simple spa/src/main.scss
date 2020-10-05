@@ -1,6 +1,9 @@
+$bg-dark: gray;
+
+
 body {
     margin: 0;
     padding: 0;
-    background-color: gainsboro;
+    background-color: $bg-dark;
     color: #fff;
 }
