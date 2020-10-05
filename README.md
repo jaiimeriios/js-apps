@@ -40,4 +40,4 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 
 #### :crown: wes bos javascript 30
 
-#### simple spa
+#### :spades: simple js SPA
