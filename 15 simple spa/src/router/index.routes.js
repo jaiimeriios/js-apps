@@ -1,4 +1,4 @@
-import Home from '../views/home'
+import { pages } from '../controllers/index'
 let content = document.querySelector('#root')
 
 const router = (route) => {
@@ -7,17 +7,20 @@ const router = (route) => {
 
     switch (route) {
         case '': {
-            return content.appendChild(Home())
+            return content.appendChild(pages.home())
         }
         case '#/': {
-            return content.appendChild(Home())
+            return content.appendChild(pages.home())
         }
-        case '#/post':
-            return console.log('Post')
-        case '#/products':
-            return console.log('Products')
-        default:
-            return console.log('404')
+        case '#/posts': {
+            return content.appendChild(pages.posts())
+        }
+        case '#/products': {
+            return content.appendChild(pages.products())
+        }
+        default: {
+            return content.appendChild(pages.notFound())
+        }
     }
 
 }
