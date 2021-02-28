@@ -1,0 +1,37 @@
+button {
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 0.2rem;
+    color: $button_text_color;
+    border: solid 1px $button_border_color;
+    box-shadow: $box_shadow_15;
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover,
+    &:focus {
+        filter: brightness(120%);
+    }
+
+    @include mq(768px) {
+        min-width: 30px;
+        min-height: 26px;
+    }
+}
+
+button#addItem {
+    font-size: 1.1rem;
+    background-color: $button_add_color;
+    @include mq(768px) {
+        padding: 0 12px;
+    }
+}
+
+button#clearItems {
+    font-size: 0.85rem;
+    padding: 0 8px;
+    background-color: $button_remove_color;
+}

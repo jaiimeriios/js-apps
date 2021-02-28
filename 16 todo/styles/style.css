@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: auto;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+}
+
+@media only screen and (min-width: 768px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: #dde6ea;
+}
+
+section {
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: 700px;
+  margin: 10px auto;
+  background-color: #fff;
+  border: solid 1px #bdc6ca;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+button {
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 0.2rem;
+  color: #fff;
+  border: solid 1px #acb5b9;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover, button:focus {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+@media only screen and (min-width: 768px) {
+  button {
+    min-width: 30px;
+    min-height: 26px;
+  }
+}
+
+button#addItem {
+  font-size: 1.1rem;
+  background-color: #0db314;
+}
+
+@media only screen and (min-width: 768px) {
+  button#addItem {
+    padding: 0 12px;
+  }
+}
+
+button#clearItems {
+  font-size: 0.85rem;
+  padding: 0 8px;
+  background-color: #d23b3b;
+}
+
+.newItemEntry {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 15px 0;
+}
+
+.newItemEntry form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.newItemEntry form label {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  margin: 0 auto 12px auto;
+  display: block;
+  text-align: center;
+  color: #000;
+}
+
+.newItemEntry form input[type='text'] {
+  width: 70%;
+  font-size: 1rem;
+  padding: 0 10px;
+  margin: 0 10px 0 0;
+  border-radius: 0.2rem;
+  border: solid 1px #ccc;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.newItemEntry form input[type='text']::-webkit-input-placeholder {
+  color: #82a5b5;
+}
+
+.newItemEntry form input[type='text']:-ms-input-placeholder {
+  color: #82a5b5;
+}
+
+.newItemEntry form input[type='text']::-ms-input-placeholder {
+  color: #82a5b5;
+}
+
+.newItemEntry form input[type='text']::placeholder {
+  color: #82a5b5;
+}
+
+.newItemEntry form input[type='text']:focus {
+  border: solid 1px #119ad8;
+}
+
+@media only screen and (min-width: 768px) {
+  .newItemEntry form input[type='text'] {
+    padding: 7px 10px;
+  }
+}
+
+.listContainer {
+  min-height: 60vh;
+  padding: 15px 20px;
+}
+
+.listContainer .listTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: solid 1px #bdc6ca;
+  padding: 0 0 5px 0;
+}
+
+.listContainer #listItems .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.listContainer #listItems .item input[type='checkbox'] {
+  margin: 0 0.25rem 0 0;
+}
+
+.listContainer #listItems .item input[type='checkbox']:hover {
+  cursor: pointer;
+}
+
+.listContainer #listItems .item input[type='checkbox'] + label {
+  cursor: pointer;
+  outline: none;
+  color: #0e29b1;
+}
+
+.listContainer #listItems .item input[type='checkbox']:checked + label {
+  color: #59649e;
+  text-decoration: line-through;
+  -webkit-text-decoration-color: #6878c5;
+          text-decoration-color: #6878c5;
+}
+/*# sourceMappingURL=style.css.map */

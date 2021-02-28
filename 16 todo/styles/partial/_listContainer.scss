@@ -1,0 +1,41 @@
+.listContainer {
+    min-height: 60vh;
+    padding: 15px 20px;
+
+    .listTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: solid 1px $container_border_color;
+        padding: 0 0 5px 0;
+    }
+
+    #listItems {
+        .item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 10px 0;
+
+            input[type='checkbox'] {
+                margin: 0 0.25rem 0 0;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                + label {
+                    cursor: pointer;
+                    outline: none;
+                    color: #0e29b1;
+                }
+
+                &:checked + label {
+                    color: #59649e;
+                    text-decoration: line-through;
+                    text-decoration-color: #6878c5;
+                }
+            }
+        }
+    }
+}

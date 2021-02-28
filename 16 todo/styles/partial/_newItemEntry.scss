@@ -1,0 +1,42 @@
+.newItemEntry {
+    position: sticky;
+    top: 0;
+    padding: 15px 0;
+
+    form {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        label {
+            flex: 0 0 100%;
+            margin: 0 auto 12px auto;
+            display: block;
+            text-align: center;
+            color: $default_font_color;
+        }
+
+        input[type='text'] {
+            width: 70%;
+            font-size: 1rem;
+            padding: 0 10px;
+            margin: 0 10px 0 0;
+            border-radius: 0.2rem;
+            border: solid 1px $textbox_border_color;
+            box-shadow: $box_shadow_15;
+            outline: none;
+
+            &::placeholder {
+                color: #82a5b5;
+            }
+
+            &:focus {
+                border: solid 1px #119ad8;
+            }
+
+            @include mq(768px) {
+                padding: 7px 10px;
+            }
+        }
+    }
+}
