@@ -7,7 +7,6 @@ Collection of my Javascript simple applications, exercises & examples
 Jaime Alejandro Rios
 
 _Website_ - [jaiimeriios.com](https://jaiimeriios.com/)
-
 _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 
 ## projects
