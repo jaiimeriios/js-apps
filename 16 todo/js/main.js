@@ -3,8 +3,6 @@ import ToDoItem from './todoitem.js';
 
 const toDoList = new ToDoList();
 
-// Launch app
-
 document.addEventListener('readystatechange', (event) => {
     if (event.target.readyState === 'complete') {
         initApp();
@@ -12,14 +10,12 @@ document.addEventListener('readystatechange', (event) => {
 });
 
 const initApp = () => {
-    // Add Listeners
     const itemEntryForm = document.getElementById('itemEntryForm');
     itemEntryForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         processSubmission();
     });
-
     const clearItems = document.getElementById('clearItems');
     clearItems.addEventListener('click', (event) => {
         const list = toDoList.getList();
@@ -30,17 +26,24 @@ const initApp = () => {
 
             if (confirmed) {
                 toDoList.clearList();
-                // TODO update persistent data
+                updatePersistentData(toDoList.getList());
                 refreshPage();
             }
         }
     });
-
-    // Procedural
-
-    // Load list object
-
+    LoadListObject();
     refreshPage();
+};
+
+const LoadListObject = () => {
+    const storedList = localStorage.getItem('myToDoList');
+    if (typeof storedList != 'string') return;
+
+    const parsedList = JSON.parse(storedList);
+    parsedList.forEach((itemObj) => {
+        const newToDoItem = createNewItem(itemObj._id, itemObj._item);
+        toDoList.addItemList(newToDoItem);
+    });
 };
 
 const refreshPage = () => {
@@ -92,7 +95,8 @@ const buildListItem = (item) => {
 const addClickListenerToCheckbox = (checkbox) => {
     checkbox.addEventListener('click', (event) => {
         toDoList.removeItemFromList(checkbox.id);
-        // TODO: remove from persistent data
+
+        updatePersistentData(toDoList.getList());
 
         setTimeout(() => {
             refreshPage();
@@ -100,7 +104,9 @@ const addClickListenerToCheckbox = (checkbox) => {
     });
 };
 
-
+const updatePersistentData = (listArray) => {
+    localStorage.setItem('myToDoList', JSON.stringify(listArray));
+};
 
 const clearItemEntryField = () => {
     document.getElementById('newItem').value = '';
@@ -116,6 +122,7 @@ const processSubmission = () => {
     const nextItemId = calcNetItemId();
     const toDoItem = createNewItem(nextItemId, newEntryText);
     toDoList.addItemList(toDoItem);
+    updatePersistentData(toDoList.getList());
     refreshPage();
 };
 
