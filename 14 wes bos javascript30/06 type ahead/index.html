@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form class="search-form">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+    </form>
+    <script>
+
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+        const cities = []
+
+        // get data from json file
+        fetch(endpoint).then((dataResponse) => {
+            dataResponse.json().then((data) => {
+                cities.push(...data)
+            })
+        })
+
+        // add commas to numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+
+        // filter words from input
+        function findMatches(wordToMatch, cities) {
+            return cities.filter((place) => {
+                const regex = new RegExp(wordToMatch, 'gi')
+                return place.city.match(regex) || place.state.match(regex)
+            })
+        }
+
+        // get data from array
+        function displayMatches() {
+            const matchArray = findMatches(this.value, cities)
+            const html = matchArray.map((place) => {
+                const regexWord = new RegExp(this.value, 'gi')
+                const cityName = place.city.replace(regexWord, `<span class="hl">${this.value}</span>`)
+                const stateName = place.state.replace(regexWord, `<span class="hl">${this.value}</span>`)
+                return `
+                <li>
+                    <span class='name'>${cityName}, ${stateName}</span>
+                    <span class='name'>${numberWithCommas(place.population)}</span>
+                </li>
+                `
+            }).join('') // from array to string
+            searchList.innerHTML = html
+        }
+
+        const searchInput = document.querySelector('.search')
+        const searchList = document.querySelector('.suggestions')
+
+        searchInput.addEventListener('keyup', displayMatches)
+
+    </script>
+</body>
+
+</html>
