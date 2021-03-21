@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Tools</title>
+</head>
+
+<body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        console.dir(console)
+
+        // Regular
+        console.log('hello');
+
+        // Interpolated
+        console.log('Hello I am a %s string!', '💩');
+
+        // Styled
+        console.log('%c I am some great text', 'font-size:14px; background:red; text-shadow: 1px 1px 1px #000')
+
+        // warning!
+        console.warn('Advertencia');
+
+        // Error :|
+        console.error('Error aqui');
+
+        // Info
+        console.info('Crocodiles eat 3-4 people per year');
+
+
+        // Testing
+        console.assert(document.querySelector('p').classList.contains('ouch'), 'esta mal');
+
+        // Viewing DOM Elements
+        console.log(document.querySelector('p'));
+        console.dir(document.querySelector('p'));
+
+        // clearing
+        // console.clear();
+
+
+
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+        console.table(dogs);
+        // Grouping together
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`);
+            console.log(`This is ${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} years old`);
+            console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+            console.groupEnd(`${dog.name}`);
+        });
+
+        // counting
+        console.count('asdf');
+        console.count('asdf');
+        console.count('qwer');
+        console.count('qwer');
+        console.count('asdf');
+        console.count('qwer');
+        console.count('asdf');
+        console.count('qwer');
+        console.count('qwer');
+        console.count('qwer');
+        console.count('qwer');
+        console.count('qwer');
+
+        // timing
+        console.time('Datos Obtenidos en');
+        fetch('https://api.github.com/users/jaiimeriios')
+            .then(data => data.json())
+            .then(data => {
+                console.timeEnd('Datos Obtenidos en');
+                console.log(data);
+            });
+
+    </script>
+</body>
+
+</html>
