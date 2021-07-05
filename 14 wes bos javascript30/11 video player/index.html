@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Video Player</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #354f50 0%, #170f29 100%);
+        }
+
+        .player {
+            max-width: 750px;
+            position: relative;
+            font-size: 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* This css is only applied when fullscreen is active. */
+        .player:fullscreen {
+            max-width: none;
+            width: 100%;
+        }
+
+        .player:-webkit-full-screen {
+            max-width: none;
+            width: 100%;
+        }
+
+        .player__video {
+            width: 100%;
+        }
+
+        .player__button {
+            background: none;
+            border: 0;
+            line-height: 1;
+            color: #f1f1f1;
+            text-align: center;
+            outline: 0;
+            padding: 0;
+            cursor: pointer;
+            max-width: 50px;
+        }
+
+        .player__button:focus {
+            border-color: #ffc600;
+        }
+
+        .player__button span {
+            vertical-align: text-bottom;
+            font-size: 15px;
+        }
+
+        .player__slider {
+            width: 10px;
+            height: 30px;
+        }
+
+        .player__controls {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: translateY(100%) translateY(-5px);
+            transition: all .3s;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .player:hover .player__controls {
+            transform: translateY(0);
+        }
+
+        .player:hover .progress {
+            height: 15px;
+        }
+
+        .player__controls>* {
+            flex: 1;
+        }
+
+        .progress {
+            flex: 10;
+            position: relative;
+            display: flex;
+            flex-basis: 100%;
+            height: 5px;
+            transition: height 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: ew-resize;
+        }
+
+        .progress__filled {
+            width: 0.25%;
+            background: #098350;
+            flex: 0;
+            flex-basis: 0.25%;
+        }
+
+        .fullscreen-btn {
+            max-width: 30px;
+            color: #fff;
+            font-size: 10px;
+            margin: auto 0px;
+            padding: 0 7px;
+        }
+
+        .fullscreen-btn {
+            color: #000;
+            margin: auto 6px;
+            padding: 3px 0;
+            background-color: #f9f9f9;
+            border-radius: 2px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .player__button:hover,
+        .fullscreen-btn:hover {
+            background: #098350;
+            color: #f1f1f1;
+        }
+
+        /* unholy css to style input type="range" */
+
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+            width: 100%;
+            margin: 0 5px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 1.3px;
+            border: 0.2px solid rgba(1, 1, 1, 0);
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 15px;
+            width: 15px;
+            border-radius: 50px;
+            background: #098350;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -3.5px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type=range]:active::-webkit-slider-runnable-track {
+            background: #bada55;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+            background: #fff;
+            border-radius: 1.3px;
+            border: 0.2px solid rgba(1, 1, 1, 0);
+        }
+
+        input[type=range]::-moz-range-thumb {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+            height: 15px;
+            width: 15px;
+            border-radius: 50px;
+            background: #098350;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="player">
+        <video class="player__video viewer" src="video.mp4"></video>
+
+        <div class="player__controls">
+            <div class="progress">
+                <div class="progress__filled"></div>
+            </div>
+            <button class="player__button toggle" title="Toggle Play">►</button>
+            <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
+            <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.5" value="1">
+            <button data-skip="-10" class="player__button"><span>«</span> 10s</button>
+            <button data-skip="10" class="player__button">10s <span>»</span></button>
+            <button class="fullscreen-btn">FS</button>
+        </div>
+    </div>
+
+    <script>
+        // Get Our Elements
+        const player = document.querySelector('.player');
+        const video = player.querySelector('.viewer');
+        const progress = player.querySelector('.progress');
+        const progressBar = player.querySelector('.progress__filled');
+        const toggle = player.querySelector('.toggle');
+        const skipButtons = player.querySelectorAll('[data-skip]');
+        const ranges = player.querySelectorAll('.player__slider');
+        const fullscreen = player.querySelector('.fullscreen-btn');
+
+        // Build out functions
+        function togglePlay() {
+            const method = video.paused ? 'play' : 'pause';
+            video[method]();
+        }
+
+        function updateButton() {
+            const icon = this.paused ? '►' : '❚ ❚';
+            console.log(icon);
+            toggle.textContent = icon;
+        }
+
+        function skip() {
+            console.log(this.dataset.skip)
+            video.currentTime += parseFloat(this.dataset.skip)
+        }
+
+        function handleRangeUpdate() {
+            video[this.name] = this.value
+            console.log(this.value)
+        }
+
+        function handleProgress() {
+            const percent = (video.currentTime / video.duration) * 100
+            progressBar.style.flexBasis = `${percent}%`
+        }
+
+        function scrub(e) {
+            const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration
+            video.currentTime = scrubTime
+        }
+
+        // Create fullscreen video button
+        function toggleFullscreen() {
+            if (video.requestFullScreen) {
+                video.requestFullScreen();
+            } else if (video.webkitRequestFullScreen) {
+                video.webkitRequestFullScreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            }
+        }
+
+        // Detect press of Spacebar or Enter, toggle play
+        function detectKeypress(e) {
+            if (e.keyCode == 32 || e.keyCode == 13) {
+                togglePlay()
+            } else {
+                return
+            }
+        }
+
+        // Skip with Left or Right arrow key
+        function detectSkipKeypress(e) {
+            if (e.keyCode == 37) {
+                skipButtons[0].click()
+            } else if (e.keyCode == 39) {
+                skipButtons[1].click()
+            } else {
+                return
+            }
+        }
+
+        // Event Listeners
+        video.addEventListener('click', togglePlay)
+        video.addEventListener('play', updateButton)
+        video.addEventListener('pause', updateButton)
+        video.addEventListener('timeupdate', handleProgress)
+
+        toggle.addEventListener('click', togglePlay)
+        window.addEventListener('keydown', detectKeypress)
+        window.addEventListener('keydown', detectSkipKeypress)
+
+        skipButtons.forEach((btn) => {
+            btn.addEventListener('click', skip)
+        })
+        ranges.forEach((range) => {
+            range.addEventListener('click', handleRangeUpdate)
+        });
+        ranges.forEach((range) => {
+            range.addEventListener('mousemove', handleRangeUpdate)
+        });
+        fullscreen.addEventListener('click', toggleFullscreen)
+
+        let mousedown = false
+        progress.addEventListener('click', scrub)
+        progress.addEventListener('mousemove', (e) => mousedown && scrub(e))
+        progress.addEventListener('mousedown', () => {
+            mousedown = true
+        })
+        progress.addEventListener('mouseup', () => {
+            mousedown = false
+        })
+
+    </script>
+</body>
+
+</html>
