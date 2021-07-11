@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <title>LocalStorage & Event Delegation</title>
     <style>
-        *,
-        *:before,
-        *:after {
+        *, *:before, *:after {
             box-sizing: border-box;
         }
 
@@ -24,8 +22,7 @@
             background-repeat: no-repeat;
         }
 
-        html,
-        body {
+        html, body {
             margin: 0;
             padding: 0;
         }
@@ -175,7 +172,6 @@
 
         addItems.addEventListener('submit', addItem)
         itemsList.addEventListener('click', toggleDone)
-
 
         populateList(items, itemsList)
 
