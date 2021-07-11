@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LocalStorage & Event Delegation</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            text-align: center;
+            font-size: 16px;
+            background: url("https://cdn.wallpaper.com/main/2015/10/malamen-1.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            padding: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0, 0, 0, 0.45);
+        }
+
+        .wrapper {
+            padding: 10px 15px;
+            margin: 0 auto;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: #f5f5f5;
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin: 0;
+            font-weight: 200;
+        }
+
+        .add-items {
+            margin: 15px 0;
+        }
+
+        .add-items input {
+            padding: 10px;
+            outline: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .add-items input[type=submit] {
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+
+        .add-items input[type=submit]:hover {
+            color: #fff;
+            background-color: #969696;
+        }
+
+        .todo-list {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            list-style: none;
+        }
+
+        .todo-list li {
+            padding: 10px 4px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .todo-list li:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .todo-list label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .todo-list input {
+            display: none;
+        }
+
+        .todo-list input+label:before {
+            content: "⬜";
+            margin-right: 8px;
+            font-size: .75rem;
+            vertical-align: middle;
+        }
+
+        .todo-list input:checked+label:before {
+            content: "✅";
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LocalStorage & Event Delegation</h1>
+
+    <div class="wrapper">
+        <h2>TODOS</h2>
+        <p></p>
+        <form class="add-items">
+            <input type="text" name="item" placeholder="Item Name" required>
+            <input type="submit" value="+ Add Item">
+        </form>
+        <ul class="todo-list">
+            <li>Loading todos...</li>
+        </ul>
+    </div>
+
+    <script>
+        const addItems = document.querySelector('.add-items');
+        const itemsList = document.querySelector('.todo-list');
+        const items = JSON.parse(localStorage.getItem('items') || [])
+
+        function addItem(e) {
+            e.preventDefault()
+            const text = (this.querySelector('[name=item')).value
+            const item = {
+                text: text,
+                done: false
+            }
+
+            items.push(item)
+
+            populateList(items, itemsList)
+
+            localStorage.setItem('items', JSON.stringify(items))
+
+            this.reset()
+        }
+
+        function populateList(plates = [], platesList) {
+            platesList.innerHTML = plates.map((plate, i) => {
+                return `
+                    <li>
+                        <input type="checkbox" data-index="${i}" id="item${i}" ${plate.done ? 'checked' : ''}/>
+                        <label for="item${i}">${plate.text}</label>    
+                    </li>
+                `
+            }).join('')
+        }
+
+        function toggleDone(e) {
+            if (!e.target.matches('input')) return
+
+            const i = e.target.dataset.index
+            items[i].done = !items[i].done
+
+            localStorage.setItem('items', JSON.stringify(items))
+            populateList(items, itemsList)
+        }
+
+        addItems.addEventListener('submit', addItem)
+        itemsList.addEventListener('click', toggleDone)
+
+
+        populateList(items, itemsList)
+
+    </script>
+
+</body>
+
+</html>
