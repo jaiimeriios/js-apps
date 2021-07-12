@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Get User Media Code Along!</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(45deg, #08111f, #2b3a38);
+        }
+
+        .photobooth {
+            width: 96%;
+            max-width: 60em;
+            margin: 3rem auto;
+            border-radius: 4px;
+            background: #f1f1f1;
+        }
+
+        .rgb {
+            margin: 0 auto;
+            padding: 10px 0;
+            width: 500px;
+        }
+
+        .rgb label {
+            font-size: 1rem;
+            min-width: 90px;
+            margin: 0 0 8px 0;
+            text-align: right;
+            display: inline-block;
+        }
+
+        .player {
+            width: 120px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .photo {
+            width: 100%;
+            background: #dcdcdc;
+        }
+
+        .take-photo {
+            display: block;
+            font-size: 22px;
+            text-align: center;
+            margin: 12px auto 0 auto;
+            border: solid 2px #fee801;
+            padding: 11px;
+            border-radius: 50%;
+            color: #ffff;
+            cursor: pointer;
+            outline: none;
+            background: radial-gradient(#5a5a5a, #464646);
+        }
+        
+        .take-photo::after {
+            content: '📷'
+        }
+        .take-photo:active::after {
+            content: '📸'
+        }
+        .take-photo:hover {
+            border-color: rgb(233, 87, 87);
+        }
+        .take-photo:active {
+            border-color: red;
+            background: radial-gradient(#464646, #5a5a5a);
+        }
+
+        .strip {
+            padding: 2rem;
+        }
+
+        .strip img {
+            width: 150px;
+            overflow-x: scroll;
+            padding: 0.5rem;
+            background: #fff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .strip a:nth-child(5n+1) img {
+            transform: rotate(10deg);
+        }
+
+        .strip a:nth-child(5n+2) img {
+            transform: rotate(-2deg);
+        }
+
+        .strip a:nth-child(5n+3) img {
+            transform: rotate(8deg);
+        }
+
+        .strip a:nth-child(5n+4) img {
+            transform: rotate(-11deg);
+        }
+
+        .strip a:nth-child(5n+5) img {
+            transform: rotate(12deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="photobooth">
+        <div class="controls">
+
+            <div class="rgb">
+                <label for="rmin">Red Min:</label>
+                <input type="range" min=0 max=255 name="rmin">
+                <label for="rmax">Red Max:</label>
+                <input type="range" min=0 max=255 name="rmax">
+                <label for="gmin">Green Min:</label>
+                <input type="range" min=0 max=255 name="gmin">
+                <label for="gmax">Green Max:</label>
+                <input type="range" min=0 max=255 name="gmax">
+                <label for="bmin">Blue Min:</label>
+                <input type="range" min=0 max=255 name="bmin">
+                <label for="bmax">Blue Max:</label>
+                <input type="range" min=0 max=255 name="bmax">
+            </div>
+
+        </div>
+
+        <video class="player"></video>
+        <canvas class="photo"></canvas>
+        <button class="take-photo"></button>
+        <div class="strip"></div>
+    </div>
+
+    <audio class="snap" src="media/snap.mp3"></audio>
+
+    <script>
+        const video = document.querySelector('.player');
+        const canvas = document.querySelector('.photo');
+        const ctx = canvas.getContext('2d');
+        const strip = document.querySelector('.strip');
+        const snap = document.querySelector('.snap');
+        const takePhotoBtn = document.querySelector('.take-photo');
+
+        function getVideo() {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then((localMediaStream) => {
+                    video.srcObject = localMediaStream
+                    video.play()
+                })
+                .catch((error) => {
+                    console.error('chales', error)
+                })
+        }
+
+        function paintToCanvas() {
+            const width = video.videoWidth
+            const height = video.videoHeight
+
+            canvas.width = width
+            canvas.height = height
+
+            setInterval(() => {
+                ctx.drawImage(video, 0, 0, width, height)
+                // take pixels out
+                let pixels = ctx.getImageData(0, 0, width, height)
+
+                // Mess with them
+                // pixels = redEffect(pixels)
+                // pixels = greenScreen(pixels)
+                pixels = rgbSplit(pixels)
+
+
+                // Put them back
+                ctx.putImageData(pixels, 0, 0)
+            }, 8)
+        }
+
+        function takePhoto() {
+            // play sound
+            snap.currentTime = 0
+            snap.play()
+            // take data out of the canvas
+            const data = canvas.toDataURL('image/jpeg')
+            const link = document.createElement('a')
+            link.href = data
+            link.setAttribute('download', 'maldad')
+            link.innerHTML = `<img src="${data}" alt="Maldad >:D" />`
+            strip.insertBefore(link, strip.firstChild)
+
+        }
+
+        function redEffect(pixels) {
+            for (let i = 0; i < pixels.data.length; i += 4) {
+                pixels.data[i + 0] = pixels.data[i + 0] + 50; // RED
+                pixels.data[i + 1] = pixels.data[i + 1] - 50; // GREEN
+                pixels.data[i + 2] = pixels.data[i + 2] * 0.5; // Blue
+            }
+            return pixels;
+        }
+
+        function rgbSplit(pixels) {
+            for (let i = 0; i < pixels.data.length; i += 4) {
+                pixels.data[i - 100] = pixels.data[i + 2]; // Blue
+                pixels.data[i - 10] = pixels.data[i + 0]; // RED
+                pixels.data[i + 200] = pixels.data[i + 1]; // GREEN
+            }
+            return pixels;
+        }
+
+        function greenScreen(pixels) {
+            const levels = {};
+
+            document.querySelectorAll('.rgb input').forEach((input) => {
+                levels[input.name] = input.value;
+            });
+
+            for (i = 0; i < pixels.data.length; i = i + 4) {
+                red = pixels.data[i + 0];
+                green = pixels.data[i + 1];
+                blue = pixels.data[i + 2];
+                alpha = pixels.data[i + 3];
+
+                if (red >= levels.rmin
+                    && green >= levels.gmin
+                    && blue >= levels.bmin
+                    && red <= levels.rmax
+                    && green <= levels.gmax
+                    && blue <= levels.bmax) {
+                    // take it out!
+                    pixels.data[i + 3] = 0;
+                }
+            }
+            return pixels;
+        }
+
+        getVideo()
+        video.addEventListener('canplay', paintToCanvas)
+        takePhotoBtn.addEventListener('click', takePhoto)
+
+    </script>
+
+</body>
+
+</html>
