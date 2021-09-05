@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --blk: #000;
+    --wht: #fff;
+    --bg-color: #e8e6ef;
+
+    --search-bar-border: #e6e6e6;
+    --stats-color: #70757a;
+    --clear-button-color: #d9d9d9;
+    --font-color: #000;
+    --logo-blue: #4885ed;
+    --logo-red: #db3236;
+    --logo-yellow: #ffc107;
+    --logo-green: #3cba54;
+    --link-color: #1a0dab;
+    --link-visited-color: #609;
+    --font-stack: "Roboto", Arial, sans-serif;
+    --footer-height: 40px;
+    --body-padding: 20px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--font-stack);
+    color: var(--blk);
+    background-color: var(--bg-color);
+}
+body {
+    padding-top: var(--body-padding);
+}
+@media only screen and (min-width: 676px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    html,
+    body {
+        font-size: 18px;
+    }
+}
+
+/* SHARED */
+.blue {
+    color: var(--logo-blue);
+}
+.red {
+    color: var(--logo-red);
+}
+.yellow {
+    color: var(--logo-yellow);
+}
+.green {
+    color: var(--logo-green);
+}
+.exclaim {
+    display: inline-block;
+    transform: rotate(12deg);
+}
+.offscreen {
+    position: absolute;
+    left: -10000px;
+}
+.none {
+    display: none;
+}
+.flex {
+    display: flex;
+}
+
+/* CONTENT */
+main {
+    width: 94%;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 5px 5px 0 0;
+    overflow: auto;
+    background-color: var(--wht);
+    height: calc(98vh - var(--body-padding) - var(--footer-height));
+}
+
+/* Search Section */
+.search-entry {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.search-entry .logo {
+    letter-spacing: -2px;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0 auto 10px auto;
+    text-align: center;
+}
+
+.search-entry .search-bar {
+    width: 80%;
+    display: flex;
+    border-radius: 500px;
+    padding: 0.15rem 0.25rem 0.15rem 1rem;
+    border: 2px solid var(--search-bar-border);
+}
+
+@media only screen and (min-width: 768px) {
+    .search-bar {
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+.search-bar:hover,
+.search-bar:focus-within {
+    box-shadow: 0 2px 5px 2px var(--search-bar-border);
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    font-size: 1em;
+    text-align: left;
+    letter-spacing: 1px;
+    border: 0;
+    outline: none;
+    min-width: 50px;
+    font-weight: 600;
+}
+
+.search-bar .button {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    min-width: 40px;
+    min-height: 40px;
+    outline: none;
+}
+
+.search-bar .button i {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.5em;
+}
+
+.search-button:hover i,
+.search-button:focus i {
+    color: var(--logo-green);
+}
+
+.clear {
+    justify-content: center;
+    align-items: center;
+    color: var(--stats-color);
+    border-right: thin solid var(--clear-button-color);
+}
+
+.clear:hover i,
+.clear:focus i {
+    color: var(--logo-red);
+}
+
+/* RESULTS */
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.results .search-results {
+    width: 95%;
+    max-width: 800px;
+}
+
+.results .result-item {
+    margin: 0 0 1em 0;
+    padding: 0 0 1em 0;
+    border-bottom: solid 1px var(--stats-color);
+}
+
+.results .result-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.results .result-content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* FOOTER */
+footer {
+    width: 94%;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 0 0 5px 5px;
+    height: var(--footer-height);
+    background-color: var(--wht);
+}
+footer p {
+    margin: auto;
+    color: var(--stats-color);
+}
+
+footer p a {
+    color: var(--stats-color);
+}

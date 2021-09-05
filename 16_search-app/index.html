@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/jaiimeriios/html5-Main-Template/master/favicon.ico" />
+    <title>SearchMe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- https://www.youtube.com/watch?v=Dk6Wopar10k -->
+
+    <main>
+        <h1 class="offscreen">Search Me - a Wikipedia powered search engine</h1>
+        <section class="search-entry">
+            <h2 class="offscreen">Search term entry</h2>
+            <div class="logo" aria-hidden="true">
+                <p><span class="blue">S</span>
+                    <span class="red">e</span>
+                    <span class="yellow">a</span>
+                    <span class="blue">r</span>
+                    <span class="green">c</span>
+                    <span class="red">h</span>
+                    <span class="blue">M</span>
+                    <span class="yellow">e</span>
+                    <span class="red exclaim">!</span>
+                </p>
+            </div>
+            <form action="search-bar" class="search-bar">
+                <label class="offscreen" for="search">Search</label>
+                <input type="text" name="search" id="search" autocomplete="off">
+                <div id="clear" class="none button clear" role="button" tabindex="0" aria-label="clear search termns">
+                    <i class="fas fa-times"></i>
+                </div>
+                <button id="search-button" class="button search-button" type="submit" aria-label="submit button"><i
+                        class="fas fa-search"></i></button>
+            </form>
+
+        </section>
+
+        <section class="results">
+            <h2 class="offscreen">Search Results</h2>
+            <div class="stats-bar">
+                <div id="stats" class="stats" aria-live="assertive">fds afdas</div>
+            </div>
+            <div id="search-results" class="search-results">
+
+                <div class="result-item">
+                    <div class="result-title">
+                        <a href="">Link here</a>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="result-text">
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio quasi magni quae
+                                voluptas enim sit libero velit ut, eligendi quis id, sunt, maiores earum officiis.
+                                Deserunt suscipit vero tenetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <div class="result-title">
+                        <a href="">Link here</a>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="result-text">
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio quasi magni quae
+                                voluptas enim sit libero velit ut, eligendi quis id, sunt, maiores earum officiis.
+                                Deserunt suscipit vero tenetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <div class="result-title">
+                        <a href="">Link here</a>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="result-text">
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio quasi magni quae
+                                voluptas enim sit libero velit ut, eligendi quis id, sunt, maiores earum officiis.
+                                Deserunt suscipit vero tenetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <div class="result-title">
+                        <a href="">Link here</a>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-image">
+                            <img src="" alt="">
+                        </div>
+                        <div class="result-text">
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio quasi magni quae
+                                voluptas enim sit libero velit ut, eligendi quis id, sunt, maiores earum officiis.
+                                Deserunt suscipit vero tenetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>
+            <span aria-hidden="true">&lt;&lt;</span>
+            powered by <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" rel="noopener">Wikipedia</a>
+            <span aria-hidden="true">&gt;&gt;</span>
+        </p>
+    </footer>
+</body>
+
+</html>
