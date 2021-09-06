@@ -41,3 +41,5 @@ _CodePen_ - [/jaiimeriios](https://codepen.io/jaiimeriios/)
 #### :crown: wes bos javascript 30
 
 #### :green_book: todo js web app
+
+#### :mag: Wikipedia Api search app

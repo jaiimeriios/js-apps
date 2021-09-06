@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +39,7 @@ body {
 }
 body {
     padding-top: var(--body-padding);
+    padding-bottom: var(--body-padding);
 }
 @media only screen and (min-width: 676px) {
     html,
@@ -90,7 +91,7 @@ main {
     border-radius: 5px 5px 0 0;
     overflow: auto;
     background-color: var(--wht);
-    height: calc(98vh - var(--body-padding) - var(--footer-height));
+    min-height: calc(98vh - var(--body-padding) - var(--footer-height));
 }
 
 /* Search Section */
@@ -105,13 +106,14 @@ main {
 .search-entry .logo {
     letter-spacing: -2px;
     font-size: 2em;
-    font-weight: 700;
+    font-weight: bold;
     margin: 0 auto 10px auto;
     text-align: center;
 }
 
 .search-entry .search-bar {
-    width: 80%;
+    width: 95%;
+    max-width: 500px;
     display: flex;
     border-radius: 500px;
     padding: 0.15rem 0.25rem 0.15rem 1rem;
@@ -137,7 +139,7 @@ main {
     border: 0;
     outline: none;
     min-width: 50px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .search-bar .button {
@@ -177,7 +179,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    padding: 0;
+}
+.results .stats {
+    margin: 5px 0;
+    color: var(--logo-blue);
 }
 
 .results .search-results {
@@ -186,20 +192,33 @@ main {
 }
 
 .results .result-item {
-    margin: 0 0 1em 0;
-    padding: 0 0 1em 0;
-    border-bottom: solid 1px var(--stats-color);
+    margin: 0 0 2em 0;
+    padding: 0 0 .5em 0;
+    border-radius: 5px;
+    border-bottom: solid 1px var(--clear-button-color);
 }
 
 .results .result-title {
+    margin: 0 0 15px 0;
+}
+
+.results .result-title a {
+    text-decoration: none;
     font-size: 1.2em;
-    font-weight: 700;
-    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: var(--link-color);
+}
+.results .result-title a:visited {
+    color: var(--link-visited-color);
 }
 
 .results .result-content {
     display: flex;
     justify-content: flex-start;
+}
+
+.results .result-image {
+    margin: 0 10px 0 0;
 }
 
 /* FOOTER */
