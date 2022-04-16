@@ -1,0 +1,22 @@
+[
+    {
+        "title": "SolarPV",
+        "description": "Photovoltaics is the conversion of light into electricity using semiconducting materials that exhibit the photovoltaic effect, a phenomenon studied in physics, photochemistry, and electrochemistry. "
+    },
+    {
+        "title": "Wind Turbine",
+        "description": "A wind turbine, or wind energy converter, is a device that converts the wind's kinetic energy into electrical energy. Wind turbines are manufactured in a wide range of sizes, with either horizontal or vertical axes"
+    },
+    {
+        "title": "Battery",
+        "description": "Battery storage is the fastest responding source of power on grids, and is used to stabilise grids. At full rated power, battery storage power stations are generally designed to output for between one and several hours."
+    },
+    {
+        "title": "Diesel Generator",
+        "description": "A diesel generator is machinery that converts the chemical energy in diesel to electrical energy"
+    },
+    {
+        "title": "Natural Gas Generator",
+        "description": "A diesel generator is machinery that converts the chemical energy in diesel to electrical energy"
+    }
+]
