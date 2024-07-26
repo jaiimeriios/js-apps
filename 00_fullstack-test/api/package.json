@@ -18,6 +18,6 @@
         "uuid": "^8.2.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.4"
+        "nodemon": "^2.0.22"
     }
 }
