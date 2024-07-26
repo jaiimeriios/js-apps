@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Every Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Every Method</h1>
+
+    <div id="content">
+        <h2>Every</h2>
+        <p>
+            The every() method tests whether all elements in the array pass the test implemented by the provided
+            function. It returns a Boolean value.
+        </p>
+
+    </div>
+
+    <script>
+
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ]
+
+
+
+        const allBlueEyes = characters.every((character) => {
+            return character.eye_color === "blue"
+        })
+        const allMass = characters.every((character) => {
+            return Number(character.mass) > 40
+        })
+        const allHeight = characters.every((character) => {
+            return Number(character.height) >= 150
+        })
+        const allMale = characters.every((character) => {
+            return character.gender === "male"
+        })
+        console.log(allBlueEyes)
+        console.log(allMass)
+        console.log(allHeight)
+        console.log(allMale)
+
+
+
+        const arr1 = [12, 5, 8, 130, 44]
+        const arr2 = [12, 54, 18, 130, 44]
+
+        const isBigEnough = (element) => {
+            return element >= 10
+        }
+        const array1 = arr1.every(isBigEnough)
+        const array2 = arr2.every(isBigEnough)
+
+        console.log(array1)
+        console.log(array2)
+
+
+
+        const mainArray = [1, 2, 3, 4, 5, 6, 7]
+
+        const isSubset = (array1, array2) => {
+            // returns true if array2 is a subset of array1
+            return array2.every((element) => {
+                return array1.includes(element)
+            })
+        }
+        const subset1 = isSubset(mainArray, [5, 7, 6])
+        const subset2 = isSubset(mainArray, [5, 8, 7])
+        console.log(subset1)
+        console.log(subset2)
+
+
+
+    </script>
+</body>
+
+</html>

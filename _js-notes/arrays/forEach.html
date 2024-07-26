@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array forEach Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array forEach Method</h1>
+
+    <div id="content">
+        <h2>forEach</h2>
+        <p>
+            The forEach() method calls a function once for each element in an array, in order.
+        </p>
+        <p>
+            forEach() is not executed for array elements without values.
+        </p>
+
+        <p>
+            forEach does not wait for promises. Make sure you are aware of the implications while using promises (or
+            async functions) as forEach callback.
+        </p>
+
+    </div>
+
+    <script>
+
+        const arraySparse = [1, 3, , 7]
+        let numCallbackRuns = 0
+
+        arraySparse.forEach(function (element) {
+            console.log(element)
+            numCallbackRuns++
+        })
+
+        console.log("numCallbackRuns: ", numCallbackRuns)
+
+        console.warn("")
+
+        const logArray = [2, 5, , 9]
+        function logArrayElements(element, index, array) {
+            console.log('a[' + index + '] = ' + element)
+        }
+        logArray.forEach(logArrayElements) // Notice that index 2 is skipped, since there is no item at that position in the array...
+
+
+        console.warn("")
+
+
+
+
+        let ratings = [5, 4, 5];
+        let sum = 0;
+
+        let sumFunction = async function (a, b) {
+            return a + b
+        }
+        ratings.forEach(async function (rating) {
+            sum = await sumFunction(sum, rating)
+        })
+
+        console.log(sum)
+
+        console.warn("")
+
+
+        function logSetElements(value1, value2, set) {
+            console.log(`s[${value1}] = ${value2}`);
+        }
+        new Set(['foo', 'bar', undefined]).forEach(logSetElements);
+
+        console.warn("")
+
+        let sumNums = 0;
+        const numbers = [65, 44, 12, 4];
+
+        const sumArray = (item) => {
+            sumNums += item;
+        }
+        numbers.forEach(sumArray);
+        console.log(sumNums)
+
+
+    </script>
+</body>
+
+</html>

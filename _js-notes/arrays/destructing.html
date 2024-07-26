@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructing</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Destructing</h1>
+
+    <p>
+        Destructuring is a JavaScript expression that makes it possible to unpack values from arrays, or properties from
+        objects, into distinct variables. That is, we can extract data from arrays and objects and assign them to
+        variables.
+    </p>
+
+
+    <script>
+        console.warn("Destructing arrays")
+
+        let introduction = ["Hello", "I", "am", "Lorem Ipsum"];
+        let greeting1 = introduction[0];
+        let name1 = introduction[3];
+
+        console.log(greeting1, name1);
+
+
+        // decostruction id bt POSITION
+        let [greeting2, pronoun2] = introduction;
+        let [greeting3, pronoun3, , lorem3] = introduction;
+        let [a, ...b] = introduction;
+        let [c, d, e, f, g = 'defaul'] = introduction;
+
+        console.log(greeting2, pronoun2);
+        console.log(lorem3);
+        console.log(b[1]);
+        console.log(g);
+
+
+
+
+
+        console.warn("Destructing Objects")
+
+        let person = {
+            name: "Nombre",
+            country: "Pais",
+            job: "Trabajo"
+        };
+
+        let name = person.name;
+        let country = person.country;
+        let job = person.job;
+
+        console.log(name, country, job);
+
+
+
+
+
+        let person1 = {
+            objbame1: "🔥 Nombre",
+            objCountry1: "🔥 Pais",
+            objJob1: "🔥 Trabajo",
+            saludo() {
+                console.log(this.objbame1)
+            }
+        };
+        
+        // decostruction id bt NAME
+        let {objbame1, objCountry1, objJob1: newName} = person1;
+        
+        console.log(objbame1, objCountry1, newName);
+
+        person1.saludo()
+
+    </script>
+</body>
+
+</html>

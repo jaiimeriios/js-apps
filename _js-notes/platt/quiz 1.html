@@ -1,0 +1,106 @@
+<html>
+
+<head>
+	<title>asdfasdf</title>
+</head>
+
+<body>
+	<!-- 1) Write a Javascript statement that produces a random number from 0 to 11 (inclusive) -->
+	<h2>1</h2>
+	<script>
+		var myRandomNumber = null; //o tanbien var myRandomNumber;
+		for (i = 0; i < 1000; i++) {
+			myRandomNumber = myRandomNumber + Math.floor(Math.random() * 12) + ", ";
+		}
+		//alert(myRandomNumber);
+
+		/*var myRandomNumber = Math.floor(Math.random() * 11) +1;
+		alert(myRandomNumber); */
+
+		function randomNumber() {
+			var x = document.getElementById("demo")
+			x.innerHTML = Math.floor((Math.random() * 11) + 1);
+		}
+	</script>
+	<p id="demo"> _ </p>
+	<button onclick="randomNumber()">Random</button>
+
+
+	<!-- 2) Write a statement(s) that will turn this string into an integer: var myNum = �555�; -->
+	<br /><br />
+	<h2>2</h2>
+	<script>
+		var myNum = number(555);
+	</script>
+	<span id="555">_</span>
+	<button onclick="myNum"> Random </button>
+	<script>
+		document.getElementById("555").innerHTML = myNum;
+	</script>
+
+	<!-- 3) Write a for loop that creates the HTML code for a pulldown (select) and puts the resulting string into var named years. The default option should say: �Select Year�. Year values should start from 2012 to 1999 (inclusive). Years should be listed in descending order, with 2012 at the top. -->
+	<br />
+	<h2>3</h2>
+	<script>
+		var years = "<select name='years' id='years'>";
+		years = years + "<option>Select Year</option>"
+
+		for (i = 2012; i > 1998; i--) {
+			years = years + "<option>" + i + "</option>";
+		}
+	</script>
+
+	<span id="yearPulldown"> </span>
+
+	<script>
+		document.getElementById("yearPulldown").innerHTML = years;
+	</script>
+
+	<!-- 4) How do you prevent a form from getting submitted using Javascript when the user clicks the submit button? Give an example. -->
+	<br />
+	<h2>4</h2>
+	<script>
+	</script>
+
+
+	<!-- 5) Explain and write some code that would add all yahoo.com emails from this list to an array named yahooEmailsArr, and disregard all other emails. Each yahoo email added should be valid. -->
+	<br />
+	<h2>5</h2>
+	<script>
+		function getYahooEmails() {
+			var emails = document.getElementById("emails").value; //get all emails from the textfield
+			var emailsArr = emails.split("\n");//emails on array so can loop through each line/email
+			var yahooEmailsArr = new Array();
+			for (i = 0; i < emailsArr.length; i++) {
+				var email = emailsArr[i];//
+				if (email.length < 6) {
+					continue;
+				}
+				if (email.indexOf("@yahoo.com") > 0) {
+					yahooEmailsArr.push(email);//add email to the end of the array
+				}
+			}
+			alert(yahooEmailsArr);
+		}
+
+	</script>
+	<span id="test"></span>
+	<button onclick="getYahooEmails();">asdf</button> <br />
+	<textarea rows="13" cols="30" id="emails">
+
+john@yahoo.com
+test@yahoo_com
+helloworld@yahoo.com
+
+jessica@gmail.com
+sonia@yahoolive.com
+
+steviewonder@myyahoo.com
+brandy@hotmail.com
+ben9987.yahoo.com
+muffin@yahoo.cn
+</textarea>
+
+</body>
+
+</html>

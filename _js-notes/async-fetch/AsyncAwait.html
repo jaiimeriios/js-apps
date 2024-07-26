@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>ASYNC AWAIT</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>ASYNC AWAIT</h1>
+    </div>
+
+    <div class="container" id="content-datos"></div>
+
+
+
+    <script type="text/javascript">
+        // async / await
+        // async must be present, always returns a promise
+        // await waits till promise is settled
+        // error handling - try/catch block
+
+        const example = async () => {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (true) {
+                        res('hello there')
+                    } else {
+                        rej(new Error('NO datos ❌'))
+                    }
+                }, 2000);
+            })
+        }
+        const someFunc = async () => {
+          const result = await example()
+          console.log(result)
+        }
+        someFunc()
+
+
+
+
+        const users = [
+            { id: 1, name: 'john' },
+            { id: 2, name: 'susan' },
+            { id: 3, name: 'asdf' },
+        ]
+
+        const articles = [
+            { userId: 1, articles: ['one', 'two', 'three'] },
+            { userId: 2, articles: ['four', 'five'] },
+            { userId: 3, articles: ['six', 'seven', 'eight', 'nine'] },
+        ]
+
+        const getData = async (person) => {
+            try {
+                const user = await getUser(person)
+                const articles = await getArticles(user.id)
+                console.log(articles)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getData('asdf')
+        getData('qwer ❓')
+        // getUser('susan')
+        //   .then((user) => getArticles(user.id))
+        //   .then((articles) => console.log(articles))
+        //   .catch((err) => console.log(err))
+
+        function getUser(name) {
+            return new Promise((resolve, reject) => {
+
+                const user = users.find((user) => user.name === name);
+                if (user) {
+                    return resolve(user);
+                } else {
+                    reject(`No such user with name: ${name}`);
+                };
+            })
+        };
+
+        function getArticles(userId) {
+            return new Promise((resolve, reject) => {
+
+                const userArticles = articles.find((user) => user.userId === userId)
+                if (userArticles) {
+                    return resolve(userArticles.articles);
+                } else {
+                    reject(`Wrong ID`);
+                };
+            })
+        };
+
+    </script>
+</body>
+
+</html>

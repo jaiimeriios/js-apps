@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Filter Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Filter Method</h1>
+
+    <div id="content">
+        <h2>Filter</h2>
+        <p>Creates a new array with elements that meet the conditions by the provided function</p>
+        <p>
+            The filter() method evaluates a callback function on each item in an existing array. Any item that meets the
+            condition in the callback function is added to a new list.
+        </p>
+        <p>
+            Using the filter method, we are able to retrieve values that meet certain criteria and add them to a new
+            array.
+        </p>
+    </div>
+
+    <script>
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ];
+
+
+
+        console.log("Filter")
+        // Creates a new array with elements that meet the conditions by the provided function.
+
+        const getGreaterThan100Mass = characters.filter((character) => {
+            return character.mass > 100
+        })
+        console.log(getGreaterThan100Mass)
+
+
+        const getHeightLessThan200 = characters.filter((character) => {
+            return character.height < 200
+        })
+        console.log(getHeightLessThan200)
+
+
+        const getMaleCharacters = characters.filter((character) => {
+            return character.gender === 'male'
+        })
+        console.log(getMaleCharacters)
+
+
+
+
+
+        const numerosArray = [12, 3, 4, 43, 34, 43, 5, 76, 45, 8, 3, 87, 130, 44]
+
+        function greatherThan(value) {
+            return value >= 10
+        }
+        let greatherThanArray = numerosArray.filter(greatherThan)
+        console.log(greatherThanArray)
+
+
+
+        const greatherThan2 = (array, value = 15) => {
+            return array.filter((num) => {
+                return num > value
+            })
+        }
+        const greatherThanArray2 = greatherThan2(numerosArray, 10)
+        console.log(greatherThanArray2)
+
+
+
+
+
+
+
+        const arrayNumeros = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        function isPrime(num) {
+            for (let i = 2; num > i; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+            return num > 1;
+        }
+        const primeNumbers = arrayNumeros.filter(isPrime)
+
+        console.log(primeNumbers);
+        // console.log(arrayNumeros.filter(isPrime));
+
+
+
+
+        let arr = [
+            { id: 15 },
+            { id: -1 },
+            { id: 0 },
+            { id: NaN },
+            { id: 3 },
+            { id: 12.2 },
+            {},
+            { id: null },
+            { id: 45 },
+            { id: NaN },
+            { id: 'undefined' }
+        ]
+
+        let invalidEntries = 0
+
+        const filterByID = (item) => {
+            if (Number.isFinite(item.id) && item.id !== 0) {
+                return true
+            }
+            invalidEntries++
+            return false;
+        }
+
+        let arrByID = arr.filter(filterByID)
+
+        console.log('Filtered Array\n', arrByID)
+        console.log('Number of Invalid Entries = ', invalidEntries)
+
+
+
+
+
+
+
+
+
+        let fruits = ['apple', 'banana', 'grapes', 'mango', 'orange']
+
+        const filterItems = (arr, query) => {
+            return arr.filter((el) => {
+                return el.toLowerCase().indexOf(query.toLowerCase()) !== -1
+            })
+        }
+        const ap = filterItems(fruits, 'ap')
+        const an = filterItems(fruits, 'an')
+
+        console.log(ap)
+        console.log(an)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

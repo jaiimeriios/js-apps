@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Array Methods</h1>
+    <div id="content">
+        <div class="links">
+            <a href="forEach.html">forEach</a>
+            <a href="map.html">Map</a>
+            <a href="filter.html">Filter</a>
+            <a href="includes.html">includes</a>
+            <a href="some.html">Some</a>
+            <a href="every.html">Every</a>
+            <a href="reduce.html">Reduce</a>
+            <a href="sort.html">Sort</a>
+        </div>
+    </div>
+
+
+    <script>
+
+        console.warn("forEach")
+        // itera sobre todos los elementos
+
+        const frutas = ["🍌", "🍎", "🍇", "🍐", "🍋"]
+
+        console.log("Arreglo Frutas::", frutas)
+
+        frutas.forEach((fruta, i) => {
+            console.log(fruta, i)
+        });
+
+
+
+
+
+
+        console.warn("Map")
+        // crea un array llamando ala funcion que le pasas para cada elemento
+
+        const dobleFruta = frutas.map((fruta, i) => {
+            return `${i} ${fruta} mapa ${fruta}`
+        })
+        console.log(dobleFruta)
+
+
+
+
+
+        console.warn("Filter")
+        // crea un nuebo array de elementos que cumplen con lo condicion de la funcion que pasa
+
+        const frutas2 = ["🍌", "🍎", "🍌", "🍐", "🍋", "🍌"]
+        const onlyBanana = frutas2.filter((fruta) => {
+            return fruta === "🍌"
+        })
+        console.log(onlyBanana)
+
+
+
+
+
+
+        console.warn("Sort")
+
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.sort();
+        console.log(fruits)
+
+        const frutasSort = ["🍌", "🍎", "🍌", "🍐", "🍋", "🍌"]
+        console.log(frutasSort.sort())
+
+
+
+
+
+        console.warn("Includes")
+        // Regresa True o False
+        // verifica si el array incluye el elemento
+        console.log("includes 🍇", frutas.includes("🍇"))
+        console.log("includes 🥝", frutas.includes("🥝"))
+
+
+
+        console.warn("Some")
+        // verifica si al menos un elemento pasa la condicion que le pongas atravez de la funcion
+        // Regresa True o False
+        const existeUvas = frutas.some((fruta) => {
+            return fruta === "🍇"
+        })
+        console.log(existeUvas)
+        const existeKiwi = frutas.some((fruta) => {
+            if (fruta === "🥝") {
+                console.log('Si tiene 🥝')
+            } else {
+                console.log('No tiene 🥝')
+            }
+        })
+
+
+
+        console.warn("Every")
+        // verifica si todos los elementos pada la condicion que lo pongas en una fucion
+        // Regresa True o False
+        const todosBanana = frutas2.every((fruta) => {
+            return fruta === "🍌"
+        })
+        console.log(todosBanana)
+
+
+
+
+
+
+
+        console.warn("Reduce")
+        // reduce el array a un valor singular llamando la funcion que le pasas para cada elemento.
+        // en cada iteracion te provee el resultado acumulado
+        const enslada = frutas.reduce((resultado, fruta) => {
+            return "🔪" + fruta + resultado
+        })
+        console.log(enslada)
+
+        const array1 = [1, 2, 3, 4];
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+        // 1 + 2 + 3 + 4
+        console.log(array1.reduce(reducer));
+
+        // 15 + 1 + 2 + 3 + 4
+        console.log(array1.reduce(reducer, 15));
+
+    </script>
+</body>
+
+</html>

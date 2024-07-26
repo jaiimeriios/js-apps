@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>Pueba de Classe</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pueba de Classe</h1>
+    </div>
+
+    <div class="container">
+    </div>
+
+    <script type="text/javascript">
+
+        class Persona {
+            constructor(nombre, edad, peli, pais) {
+                this.nombre = nombre,
+                    this.edad = edad,
+                    this.peli = peli,
+                    this.pais = pais
+            }
+            mirarPeli() {
+                entrar(`${this.nombre}`, `${this.edad}`, `${this.pais}`, `${this.peli}`)
+            }
+        }
+
+        function entrar(persona, edad, pais, movie) {
+            if (edad >= pais) {
+                console.log(`${persona} puede entrar a ver ${movie}`)
+            } else {
+                console.log(`${persona} no pasa a ver ${movie}`)
+            }
+        }
+
+        const jose = new Persona('Jose', 18, 'Jhon Whick', 18)
+        jose.mirarPeli()
+        const jhon = new Persona('Jhon', 15, 'Mulan', 14)
+        jhon.mirarPeli()
+
+
+        // entrar('jose', 18, 18)
+        // entrar('jhon', 19, 21)
+        // entrar('mike', 21, 20)
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Some Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Some Method</h1>
+
+    <div id="content">
+        <h2>Some</h2>
+        <p>
+            The some() method tests whether at least one element in the array passes the test implemented by the
+            provided function.
+        </p>
+        <p>
+            It returns true if, in the array, it finds an element for which the provided function returns true;
+            otherwise it returns false. It doesn't modify the array.
+        </p>
+    </div>
+
+    <script>
+
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ];
+
+        const maleCharacter = characters.some((character) => {
+            return character.gender === "male"
+        })
+        const blueEyes = characters.some((character) => {
+            return character.eye_color === "blue"
+        })
+        const taller = characters.some((character) => {
+            return character.height > 205
+        })
+        const mass = characters.some((character) => {
+            return character.mass < 45
+        })
+
+        console.log(maleCharacter)
+        console.log(blueEyes)
+        console.log(taller)
+        console.log(mass)
+
+
+
+
+
+
+
+
+        const array = [1, 2, 3, 4, 5];
+
+        const even = (element) => {
+            return element % 2 === 0
+        }
+        hasEvenNumber1 = array.some(even)
+        console.log(hasEvenNumber1);
+
+
+        hasEvenNumber2 = array.some((element) => {
+            return element % 2 === 0
+        })
+        console.log(hasEvenNumber2);
+
+
+
+
+        const fruits = ['apple', 'banana', 'mango', 'guava'];
+
+        const checkAvailability = (arr, val) => {
+            return arr.some((arrVal) => {
+                return val === arrVal;
+            });
+        }
+
+        const kela = checkAvailability(fruits, 'kela');
+        const banana = checkAvailability(fruits, 'banana');
+        console.log(kela)
+        console.log(banana)
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

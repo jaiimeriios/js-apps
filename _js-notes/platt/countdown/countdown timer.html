@@ -1,0 +1,105 @@
+<html>
+
+<head>
+	<title>Countdown Timer</title>
+	<script>
+		var mySeconds = 0;//global var
+		var myNumberImgArr = new Array();
+		myNumberImgArr[0] = "images/0.png";
+		myNumberImgArr[1] = "images/1.png";
+		myNumberImgArr[2] = "images/2.png";
+		myNumberImgArr[3] = "images/3.png";
+		myNumberImgArr[4] = "images/4.png";
+		myNumberImgArr[5] = "images/5.png";
+		myNumberImgArr[6] = "images/6.png";
+		myNumberImgArr[7] = "images/7.png";
+		myNumberImgArr[8] = "images/8.png";
+		myNumberImgArr[9] = "images/9.png";
+
+		function startCountdown() {
+			//Get number of minutes from the input field
+			var startingMinutes = document.getElementById("mins").value;
+			document.getElementById("myButt").disabled = true;
+			document.getElementById("myButt2").disabled = true;
+			//set total number of starting seconds
+			mySeconds = startingMinutes * 60;
+			//start and update the timer
+			updateCounter();
+			return false;
+		}
+		var test = null;
+		function updateCounter() {
+			mySeconds = mySeconds - 1;
+			//get number of WHOLE minutes remaining: seconds / 60
+			var minsRemaining = Math.floor(mySeconds / 60);//integer
+			document.getElementById("minsRemaining").innerHTML = minsRemaining;
+			//get number of seconds remaining after you take away the mins remaining: subtract seconds from whole mins from remaining secs
+			var secsRemaining = mySeconds - (minsRemaining * 60);
+			document.getElementById("secsRemaining").innerHTML = secsRemaining;
+			//convert minsRemaining to a string
+			var minsRemainingStr = minsRemaining + "";
+			var secsRemainingStr = secsRemaining + "";
+			if (secsRemainingStr.length == 2) {
+				var secs1 = secsRemainingStr[0];
+				var secs2 = secsRemainingStr[1];
+				document.getElementById("secsImg1").src = myNumberImgArr[secs1];
+				document.getElementById("secsImg2").src = myNumberImgArr[secs2];
+			} else if (secsRemainingStr.length == 1) {
+				var secs1 = secsRemainingStr[0];
+				document.getElementById("secsImg1").src = myNumberImgArr[0];
+				document.getElementById("secsImg2").src = myNumberImgArr[secs1];
+			}
+
+			if (minsRemainingStr.length == 3) {
+				var mins1 = minsRemainingStr[0];
+				var mins2 = minsRemainingStr[1];
+				var mins3 = minsRemainingStr[2];
+				document.getElementById("minsImg1").src = myNumberImgArr[mins1];
+				document.getElementById("minsImg2").src = myNumberImgArr[mins2];
+				document.getElementById("minsImg3").src = myNumberImgArr[mins3];
+			} else if (minsRemainingStr.length == 2) {
+				var mins1 = minsRemainingStr[0];
+				var mins2 = minsRemainingStr[1];
+				document.getElementById("minsImg1").src = myNumberImgArr[0];
+				document.getElementById("minsImg2").src = myNumberImgArr[mins1];
+				document.getElementById("minsImg3").src = myNumberImgArr[mins2];
+			}
+
+			if (mySeconds == 0) {
+				var myURL = document.getElementById("url").value;
+				window.location.replace(myURL);
+				return false;//exit the function
+			}
+			test = setTimeout("updateCounter()", 1000);//function name, milliseconds
+		}
+		function resetMe() {
+
+			document.getElementById("myButt").disabled = false;
+			document.getElementById("myButt2").disabled = false;
+			clearTimeout(test);
+		}
+	</script>
+</head>
+
+<body>
+	<h3>Countdown Timer</h3>
+	<form action="#" method="post" name="myForm">
+		Minutes: <input type="text" id="mins" value="" size="4" maxlength="3" onclick="resetMe();" />
+		<button onclick="return startCountdown();" id="myButt">Start Countdown</button><br />
+		<input type="submit" value="Start2" name="Test" onclick="return startCountdown();" id="myButt2" />
+		Video To Play:<br />
+		<input type="text" id="url" value="http://www.youtube.com/watch?v=vzRFlXbq-cY&feature=fvst" size="55" />
+		<br /><br />
+	</form>
+	<span id="minsRemaining">---</span>:<span id="secsRemaining">--</span>
+	<br /><br />
+	<img id="minsImg1" src="images/0.png" width="100" height="100" />
+	<img id="minsImg2" src="images/0.png" width="100" height="100" />
+	<img id="minsImg3" src="images/0.png" width="100" height="100" />
+	:
+	<img id="secsImg1" src="images/0.png" width="100" height="100" />
+	<img id="secsImg2" src="images/0.png" width="100" height="100" />
+
+</body>
+
+</html>

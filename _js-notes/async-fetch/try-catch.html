@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>TRY CATCH</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>TRY CATCH</h1>
+    </div>
+
+
+
+    <script>
+        console.log("try catch")
+        function getQuote() {
+            let quote = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+            return quote;
+        };
+
+        // console.log(quote);
+        const mainTryCatch = () => {
+            try {
+                const quote = getQuote();
+                console.log(quote);
+            } catch (error) {
+                console.error(`🔥 ${error}`);
+            }
+        };
+
+        mainTryCatch()
+
+
+
+
+
+
+        async function thisThrows() {
+            console.log("Maldad")
+            throw new Error("Thrown from thisThrows()");
+        }
+
+        async function run() {
+            try {
+                await thisThrows();
+            } catch (e) {
+                console.error(e);
+            } finally {
+                console.log('We do cleanup here');
+            }
+        }
+        run();
+
+        thisThrows()
+            .then()
+            .catch(console.error)
+            .finally(() => console.warn("finalmente"))
+
+
+
+
+
+    </script>
+</body>
+
+</html>

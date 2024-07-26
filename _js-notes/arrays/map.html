@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Map Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Map Method</h1>
+
+    <div id="content">
+        <h2>Map</h2>
+        <p>
+            The map() method creates a new array populated with the results of calling a provided function on every
+            element in the calling array.
+        </p>
+        <p>
+            The map() method creates a new array with the results of calling a function for every array element.
+        </p>
+        <p>
+            The map() method calls the provided function once for each element in an array, in order.
+        </p>
+        <p>
+            map() does not execute the function for empty elements.
+        </p>
+        <p>
+            map() does not change the original array.
+        </p>
+    </div>
+
+    <script>
+
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ];
+
+
+        const names = characters.map((character) => {
+            return character.name
+        })
+        const heights = characters.map((character) => {
+            return character.name
+        })
+        const massEye = characters.map((character) => {
+            return {
+                name: character.name,
+                eye: character.eye_color
+            }
+        })
+        const firstNames = characters.map((character) => {
+            return character.name.split(" ")[0]
+        })
+        console.log(names)
+        console.log(heights)
+        console.log(massEye)
+        console.log(firstNames)
+
+
+
+        const array1 = [1, 4, 9, 16, 22, 34, 24];
+        const map1 = array1.map((x) => {
+            return x * 2
+        });
+        console.log(array1);
+        console.log(map1);
+
+
+
+
+
+        const persons1 = [
+            { firstname: "Malcom", lastname: "Reynolds" },
+            { firstname: "Kaylee", lastname: "Frye" },
+            { firstname: "Jayne", lastname: "Cobb" }
+        ];
+        const persons2 = [
+            { firstname: "asdf", lastname: "Reynolds" },
+            { firstname: "qwer", lastname: "Frye" },
+            { firstname: "zxcv", lastname: "Cobb" }
+        ];
+
+        const getFullName = (item) => {
+            return [item.firstname, item.lastname].join(" ");
+        }
+
+        const personsName1 = persons1.map(getFullName);
+        const personsName2 = persons2.map(getFullName);
+
+        console.log(personsName1)
+        console.log(personsName2)
+
+
+
+    </script>
+</body>
+
+</html>

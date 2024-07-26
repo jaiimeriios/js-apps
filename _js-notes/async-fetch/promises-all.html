@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises All</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+
+</head>
+
+<body>
+    <h1>Promises All</h1>
+
+
+    <script>
+
+        const fetchData = async (code) => {
+            try {
+                const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+                const country = await res.json();
+                return country
+            } catch(e) {
+                console.log(e);
+            };
+        };
+
+        const fetchCountryBorders = async () => {
+            const mx = await fetchData('mx');
+            const borders = await Promise.all(mx[0].borders.map(border => fetchData(border)))
+            console.log(borders)
+        }
+
+        fetchCountryBorders()
+
+
+        // fetchData('mx')
+        
+
+
+
+    </script>
+</body>
+
+</html>

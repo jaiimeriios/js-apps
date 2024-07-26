@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For-of For-in</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>For-of For-in</h1>
+
+    <article>
+        <p>Lorem</p>
+        <p>ipsum</p>
+        <p>dolor</p>
+        <p>sit</p>
+        <p>amet</p>
+    </article>
+
+
+
+
+    <script>
+        console.warn("for Of")
+        // The for-of statement loops through the values of an iterable object.
+
+        let arrNumbers = [1.12, 1.1, 4.5];
+
+        for (let number of arrNumbers) {
+            console.log(number)
+        };
+
+        let language = "Lorem";
+        for (let x of language) {
+            console.log(x);
+        };
+
+        const articleParagraphs = document.querySelectorAll('article > p');
+        for (const paragraph of articleParagraphs) {
+            paragraph.classList.add('read');
+            paragraph.style.color = "#2196f3";
+        };
+
+
+
+
+
+
+
+
+        console.warn("for In");
+
+        // The for-in statement loops through the properties of an object.
+        // The block of code inside the loop will be executed once for each property.
+
+        let objNumbers = {
+            id: 1,
+            name: 'lorem',
+            fire: '🔥'
+        };
+
+        for (let obj in objNumbers) {
+            // console.log(obj);
+            // console.log(objNumbers[obj]);
+            console.log(obj, objNumbers[obj]);
+        };
+
+    </script>
+</body>
+
+</html>

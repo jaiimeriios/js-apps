@@ -1,0 +1,123 @@
+<html>
+
+<head>
+	<title>Dog Years</title>
+
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
+
+	<script>
+		function calculateDogAge() {
+			//get the value entered into dogage field
+			//var myDogAge = document.dogYearForm.dogage.value;
+			var myDogAge = document.getElementById("myDogAgeID").value;
+			if (isNaN(myDogAge)) {//it's not a valid number!!!
+				//alert("Please enter a real number!!!");
+				document.getElementById("help").innerHTML = "Please enter a number";
+				document.getElementById("myDogAgeID").value = "";
+				document.getElementById("myDogAgeID").focus();
+				return false;//this means: exit the function
+			} else {//the dog age is a valid number
+				//alert("Dog age is (myDogAgeID): " + myDogAge);
+				//compute dog years to human years *7
+				var humanYears = myDogAge * 7;
+				//update the span text with dog age
+				document.getElementById("dogTohumanYearsTxt").innerHTML = humanYears;
+				return true;
+			}
+		}//end function calculateDogAge
+
+		function setDogName() {
+			var myDogName = document.getElementById('myDogNameID').value;
+			if (myDogName == "") {
+				alert("el nombre de tu perro loco!");
+				return false;
+			} else {
+				if (isNaN(myDogName)) {
+					//probably a good name
+					document.getElementById("dogNameTxt").innerHTML = myDogName;
+					//remove help message
+					document.getElementById("dognameHelp").innerHTML = "";
+					return true;
+				} else {
+					//they entered a number
+					alert("You named your dog a number!");
+					return false;
+				}
+			}
+		}
+
+		function setDogImage() {
+			//get the URL value from dogPicture text field
+			var dogPicURL = document.getElementById('dogPicture').value;
+			//check to make sure it's at least 16 characters
+			if (dogPicURL.length < 16) {
+				alert("Pon un URL de verdad!");
+				return false;
+			} else {
+				//set the image URL to the new image 
+				document.getElementById("myDogPicId").src = dogPicURL;
+				document.getElementById("myDogPicId").height = "500";
+				return true;
+			}
+		}
+
+		function showHelpTip(helpMsgID) {
+			//check to make sure helpMsgID is not empty
+			if (helpMsgID == '' || helpMsgID == undefined) {
+				document.getElementById("help").innerHTML = "Error: missing div for function showHelpTip()...";
+				alert("helpMsgID: " + helpMsgID);
+				return false;
+			}//end if
+			//see which help message to print depending on the div id
+			if (helpMsgID == "dognameHelp") {
+				document.getElementById("dognameHelp").innerHTML = "Please enter your dog's name!";
+				document.getElementById("dognameHelp").className = 'error';
+			}
+			if (helpMsgID == "dognameHelpPic") {
+				document.getElementById("dognameHelpPic").innerHTML = "Please enter a valid url!";
+				document.getElementById("dognameHelpPic").className = 'error';
+			}
+			if (helpMsgID == "dogyearsHelp") {
+				document.getElementById("dogyearsHelp").innerHTML = "Please enter your dog's age!";
+				document.getElementById("dogyearsHelp").className = 'error';
+			}
+			return true;
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<h3>Dog Years Converter</h3>
+	<form action="" method="post" name="dogYearForm">
+
+		Dog Name: <span id="dognameHelp">Help message... </span><br />
+		<input name="dogname" id="myDogNameID" type="text" size="20" value="" onblur="setDogName();"
+			onclick="showHelpTip('dognameHelp');" /><br />
+
+		Dog's Picture (URL):<span id="dognameHelpPic"> Help message... </span> <br />
+		<input name="dogpicture" id="dogPicture" type="text" size="40" value="http://" onblur="setDogImage();"
+			onclick="showHelpTipPic(dognameHelpPic);" /><br />
+
+		Age of your dog: <span id="dogyearsHelp"> Help message... </span> <br />
+		<input type="text" name="dogage" id="myDogAgeID" size="4" value="" onblur="calculateDogAge();" maxlength="2" />
+	</form>
+
+	<span id="help">Help message goes here...</span><br />
+	<span id="dogNameTxt">Your dog</span> is <span id="dogTohumanYearsTxt">___</span> years old in human years!<br />
+
+	<img id="myDogPicId"
+		src="http://1.bp.blogspot.com/-1uQRYMklACU/ToQ6aL-5uUI/AAAAAAAAAgQ/9_u0922cL14/s1600/cute-puppy-dog-wallpapers.jpg"
+		height="200" />
+
+	<script>
+//document.getElementById("myDogPicId").height = "100";
+	</script>
+</body>
+
+</html>

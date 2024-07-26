@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function getHTMLSource(){
+	var xmlhttp;
+	var query = document.getElementById("query").value;
+	if (query.indexOf("http://") >= 0){
+		query = query.replace(/http:\/\//gi, "");
+		query = escape(query);
+		query = query.replace(/\//g, "%2F");
+		document.getElementById("myTextArea").innerHTML = query;
+		alert(query);
+	}
+	// code for IE7+, Firefox, Chrome, Opera, Safari
+	if (window.XMLHttpRequest){
+	  xmlhttp = new XMLHttpRequest();
+	} else {// code for IE6, IE5
+	  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function(){
+	  if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		document.getElementById("myTextArea").innerHTML = xmlhttp.responseText;
+	  }
+	}
+	xmlhttp.open("GET","amazon-get-source-v2.php?q=" + query,false);
+	xmlhttp.send();
+	return false;
+}
+</script>
+</head>
+<body>
+
+<h2>Fetch AMAZON.COM Data - AJAX Demo</h2>
+
+<h3>Enter Search Keywords:</h3>
+
+<input type="text" value="bieber" id="query" size="50"><br/>
+<button type="button" onclick="getHTMLSource()">Request data</button>
+
+<br/>
+
+<textarea id="myTextArea" cols="65" rows="25"></textarea>
+
+
+</body>
+</html>
+

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>FETCH</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #8e9fde;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .container {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: solid 1px #e0eaf5;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .025);
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        #content-datos>div {
+            margin: 0 auto 20px auto;
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: solid 1px #dee3f7;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, .085);
+        }
+        #content-datos>div h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+        #content-datos>div p {
+            font-size: .9rem;
+            color: steelblue;
+        }
+
+        #content-pokemones {
+            justify-content: space-between;
+        }
+        #content-pokemones>div {
+            min-width: 15%;
+            margin: 0px 4px 15px 4px;
+            border-radius: 3px;
+            text-align: center;
+            user-select: none;
+            border: solid 1px #dee3f7;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, .085);
+        }
+        #content-pokemones>div p {
+            font-size: 14px;
+            margin: -8px 0 8px 0;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fetch</h1>
+    </div>
+
+    <div class="container" id="content-datos"></div>
+    <div class="container" id="content-pokemones"></div>
+
+
+    <script type="text/javascript">
+
+        console.time('Datos Obtenidos en');
+        fetch('https://api.github.com/users/jaiimeriios')
+            .then(data => data.json())
+            .then(data => {
+                console.log(data);
+                console.timeEnd('Datos Obtenidos en');
+            });
+
+        // Datos
+        const URL = 'https://jsonplaceholder.typicode.com'
+
+        fetch(`${URL}/posts`)
+            .then(response => response.json())
+            .then(data => agarrarDatos(data));
+
+        const agarrarDatos = (data) => {
+            for (let i = 0; i < data.length; i++) {
+
+                const content = document.getElementById('content-datos')
+                .appendChild(document.createElement('div'))
+
+                const title = document.createElement('h3')
+                const body = document.createElement('p')
+
+                title.innerHTML = `${data[i].id} ${data[i].title}`
+                body.innerHTML = `${data[i].body}`
+
+                content.insertAdjacentElement('afterbegin', title);
+                content.insertAdjacentElement('beforeend', body)
+            }
+        }
+
+
+        // Pokemones
+        const pokeAPI = 'https://pokeapi.co/api/v2/pokemon/'
+
+        for (let i = 1; i <= 151; i++) {
+            fetch(`${pokeAPI}${i}`)
+                .then(response => response.json())
+                .then(data => {
+                    // console.info('DATOS::', data)
+                    new Pokemon(data.sprites.front_default, data.name).crearElement()
+                })
+        }
+
+        class Pokemon {
+            constructor(imgSrc, nombre) {
+                this.source = imgSrc
+                this.alt = nombre
+                this.nombre = nombre
+            }
+            crearElement() {
+                const content = document.querySelector('#content-pokemones').appendChild(document.createElement('div'));
+                const img = document.createElement('img');
+                const p = document.createElement('p');
+
+                img.src = this.source;
+                img.alt = this.nombre
+                p.innerHTML = this.nombre
+
+                content.insertAdjacentElement('afterbegin', p);
+                content.insertAdjacentElement('afterbegin', img);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

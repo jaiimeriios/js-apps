@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Reduce Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Reduce Method</h1>
+
+    <div id="content">
+        <h2>Reduce</h2>
+        <p>
+            The reduce() method executes a user-supplied “reducer” callback function on each element of the array,
+            passing in the return value from the calculation on the preceding element.
+        </p>
+        <p>
+            The final result of running the reducer across all elements of the array is a single value.
+        </p>
+    </div>
+
+    <script>
+
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ];
+
+
+        const totalMass = characters.reduce((accumulator, currentValue) => {
+            return Number(accumulator) + Number(currentValue.mass)
+        }, 0)
+        const totalHeight = characters.reduce((accumulator, currentValue) => {
+            return Number(accumulator) + Number(currentValue.height)
+        }, 0)
+        const totalByEyeColor = characters.reduce((accumulator, currentValue) => {
+            const eyeColor = currentValue.eye_color
+            if (accumulator[eyeColor]) {
+                accumulator[eyeColor] = accumulator[eyeColor] + 1
+            } else {
+                accumulator[eyeColor] = 1
+            }
+            return accumulator
+        }, {})
+        const totalCharacters = characters.reduce((acc, curr) => {
+            return acc + curr.name.length
+        }, 0)
+
+        console.log(totalMass)
+        console.log(totalHeight)
+        console.log(totalByEyeColor)
+        console.log(totalCharacters)
+
+
+
+
+        const array1 = [1, 2, 3, 4];
+        const reducer = (previousValue, currentValue) => {
+            return previousValue + currentValue;
+        }
+
+        console.log(array1.reduce(reducer));      // 1 + 2 + 3 + 4
+        console.log(array1.reduce(reducer, 5));   // 5 + 1 + 2 + 3 + 4
+
+
+
+
+
+        const xArray = [{ x: 1 }, { x: 2 }, { x: 3 }]
+        let initialValue = 0
+        let sum = xArray.reduce((previousValue, currentValue) => {
+            return previousValue + currentValue.x
+        }, initialValue)
+
+        console.log(sum)
+
+
+
+
+
+        let people = [
+            { name: 'Alice', age: 21 },
+            { name: 'Max', age: 20 },
+            { name: 'Jane', age: 20 }
+        ];
+
+        function groupBy(objectArray, property) {
+            return objectArray.reduce(function (acc, obj) {
+                let key = obj[property]
+                if (!acc[key]) {
+                    acc[key] = []
+                }
+                acc[key].push(obj)
+                return acc
+            }, {})
+        }
+
+        let groupedPeople = groupBy(people, 'age')
+        console.log(groupedPeople)
+
+
+
+
+
+
+        let friends = [{
+            name: 'Anna',
+            books: ['Bible', 'Harry Potter'],
+            age: 21
+        }, {
+            name: 'Bob',
+            books: ['War and peace', 'Romeo and Juliet'],
+            age: 26
+        }, {
+            name: 'Alice',
+            books: ['The Lord of the Rings', 'The Shining'],
+            age: 18
+        }]
+
+        let allbooks = friends.reduce(function (previousValue, currentValue) {
+            return [...previousValue, ...currentValue.books]
+        }, [''])
+
+        console.log(allbooks)
+
+
+
+        let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd']
+        let myArrayWithNoDuplicates = myArray.reduce(function (previousValue, currentValue) {
+            if (previousValue.indexOf(currentValue) === -1) {
+                previousValue.push(currentValue)
+            }
+            return previousValue
+        }, [])
+
+        console.log(myArrayWithNoDuplicates)
+
+    </script>
+</body>
+
+</html>

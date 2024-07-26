@@ -1,0 +1,53 @@
+<html>
+
+<head>
+
+	<script>
+		//regular array with numerical indeces
+		var myArr = new Array("Hello", "World", "Good", "Morning");
+		var myMsg = null;
+
+		for (i = 0; i < myArr.length; i++) {
+			myMsg = myMsg + "i=" + i + " , myArr[i] value: " + myArr[i] + "<br/>";
+		}
+
+		//associative array with custom keys: name => value
+		var assocArr = new Array();
+		assocArr["dog"] = "wooof";
+		assocArr["cat"] = "meeow";
+		assocArr["snake"] = "hiiissss";
+		assocArr["bird"] = "chirp";
+
+		/*make sure its working
+		alert(assocArr["cat"]); */
+
+		//global variables
+		var myGlob = "ke tranza!";
+		function greeting() {
+			var myPriv = whatever();
+			alert(myPriv);//myGlob is visivle form inside this function
+		}
+
+		function whatever() {
+			//variables created inside this funtion are not visible i other functions
+			var myPriv = "que miras loco??";//private variable
+			return myPriv;
+		}
+
+	</script>
+</head>
+
+<body>
+
+	<h3>Test Arrays</h3>
+	<div id="msg">Message goes here...</div>
+
+	<script>
+		document.getElementById("msg").innerHTML = myMsg;
+	</script>
+
+	<button onclick="greeting();">Hey</button>
+
+</body>
+
+</html>

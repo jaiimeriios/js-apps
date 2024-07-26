@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Order</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Order</h1>
+
+    <script>
+        const citiesList = [
+            "nashvile",
+            "nashvile",
+            "los angeles",
+            "nashvile",
+            "memphis",
+            "barcelona",
+            "los angeles",
+            "sevilla",
+            "madrid",
+            "isla canaria",
+            "barcelona",
+            "madrid",
+            "nashvile",
+            "barcelona",
+            "london",
+            "berlin",
+            "madrid",
+            "nashvile",
+            "london",
+            "madrid",
+        ]
+        console.log(citiesList)
+
+        // regrezar x cidades mas repeditas en orden
+
+        function logMostOcurrCities(numCities) {
+            const cities = {}
+            citiesList.forEach((city) => {
+                cities[city] = !cities[city] ? 1 : cities[city] += 1
+            })
+            return Object.keys(cities)
+                .map((city) => ({
+                    name: city,
+                    time: cities[city]
+                }))
+                .sort((a, b) => {
+                    return b.time - a.time
+                })
+                .slice(0, numCities)
+                .map((city) => {
+                    console.log(city.time, city.name)
+                })
+        }
+
+        logMostOcurrCities(4)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>windows properties</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #8e9fde;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 25px auto 10px auto;
+        }
+
+        pre {
+            font-size: 1rem;
+            color: #000;
+            margin: 0 0 40px 30px;
+            line-height: 1.5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>windows properties</h1>
+
+    <script>
+
+        document.write('<pre>');
+            
+        alert(window.HTMLPreElement);
+
+        console.log('HTMLPreELement' in window);
+
+        Object.getOwnPropertyNames(window)
+            .forEach(function (v, x) {
+                if (v === 'HTMLPreElement')
+                    document.write('<h2>' + v + '</h2>');
+                else
+                    document.writeln(v);
+            });
+
+        document.write('</pre>');
+
+    </script>
+</body>
+
+</html>

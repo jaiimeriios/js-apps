@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+</head>
+
+<body>
+
+    <h1>Promesas</h1>
+
+    <script>
+        console.warn("Promesas");
+
+        let promesa = new Promise(function (res, rej) {
+            setTimeout(() => {
+                const projecto = "🔥🔥🔥";
+                let aleatoreo = Math.random();
+
+                if (aleatoreo < 0.5) {
+                    res(projecto)
+                }
+                else {
+                    rej("RECHAZADO:: 🛑")
+                }
+
+            }, 1000);
+        })
+
+        promesa
+            .then((data) => {
+                console.log(data)
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+            .finally(() => {
+                console.log("Promesa ah finalizado 🌿");
+            });
+
+
+
+
+
+        const datos = [
+            { id: 1, year: 2000, title: 'lorem' },
+            { id: 2, year: 2010, title: 'Ipsum' },
+            { id: 3, year: 2020, title: 'Dolor' }
+        ];
+
+        const getDatos1 = () => {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (false) {
+                        res(datos)
+                    } else {
+                        rej(new Error('no hay datos ⭕'))
+                    }
+                }, 1500);
+            })
+        }
+
+        getDatos1()
+            .then((dato) => {
+                console.log(dato)
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+            .finally(() => {
+                console.log("Promesa ah finalizado 🍂");
+            });
+
+
+
+
+
+        // lo mismo que arrib pero con asyn await
+
+        const getDatos2 = () => {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (false) {
+                        res(datos)
+                    } else {
+                        rej(new Error('NO datos ❌'))
+                    }
+                }, 2000);
+            })
+        }
+    
+        async function agarrandoDatos() {
+            try {
+                const datosAwait = await getDatos2();
+                console.log(datosAwait);
+            } catch (e) {
+                console.log(e.message);
+            }
+
+        };
+
+        agarrandoDatos()
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS guia</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #49569a;
+            --title-color: #c7693d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f1f4f7;
+        }
+
+        .container {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: solid 1px #e0eaf5;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .025);
+        }
+
+        .container h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .container h2 {
+            font-size: 1.1rem;
+            margin: 15px 0 20px 0;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .container .row {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .container .row .section {
+            min-width: 25%;
+            margin: 0 0 25px 0;
+        }
+
+        .container ul {
+            margin: 10px 0 0 22px;
+            font-weight: 400;
+        }
+
+        .container ul li {
+            font-size: .95rem;
+            line-height: 1.7;
+        }
+
+        .container ul li:nth-child(1) {
+            font-weight: 500;
+            list-style-type: circle;
+            color: var(--title-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Requisitos</h1>
+        <div class="row">
+            <div class="section">
+                <ul>
+                    <li>FUNDAMENTOS</li>
+                    <li>ecmascipt</li>
+                    <li>Variables</li>
+                    <li>Typos de datos</li>
+                    <li>Operadores</li>
+                    <li>Condicionales</li>
+                    <li>Ciclos</li>
+                    <li>Logica Booleana</li>
+                    <li>Funciones</li>
+                    <li>Arreglos</li>
+                    <li>Cadenas de Texto</li>
+                    <li>Objetos y Propiedades</li>
+                    <li>Iteraciones</li>
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>OPERADORES</li>
+                    <li>Coma</li>
+                    <li>Comparacion</li>
+                    <li>Ternario</li>
+                    <li>Agrupacion</li>
+                    <li>Des estructuracion</li>
+                    <li>Encadenamiento opcional</li>
+                    <li>Pipeline</li>
+                    <li>Propagacion</li>
+                    <li>typeof</li>
+                    <li>yield</li>
+
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>MANIPULACION DEL DOM</li>
+                    <li>DOM</li>
+                    <li>Crear elementos</li>
+                    <li>Eliminar elementos</li>
+                    <li>Eventos</li>
+                    <li>Actualizar elementos</li>
+                    <li>Validacion de inputs</li>
+                    <li>Componentes web</li>
+                    <li>Manipulacion de estilos</li>
+                    <li>colecciones de elementos</li>
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>OBJETOS Y FUNCIONES</li>
+                    <li>Objetos</li>
+                    <li>Prototype y chain</li>
+                    <li>Closures</li>
+                    <li>Bind</li>
+                    <li>Call</li>
+                    <li>Apply</li>
+                    <li>Funciones Flecha</li>
+                    <li>this</li>
+                    <li>clases</li>
+                    <li>Memoria</li>
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>PROMESAS, SYNC/AWAIT</li>
+                    <li>Callbacks</li>
+                    <li>Promesas</li>
+                    <li>try / catch</li>
+                    <li>throw</li>
+                    <li>async / await</li>
+                    <li>AJAX & APIs</li>
+                    <li>fetch</li>
+                    <li>Funciones asincronas</li>
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>PROGESSIVE WEB APPS</li>
+                    <li>Manifest</li>
+                    <li>Service Workers</li>
+                    <li>Static caching</li>
+                    <li>Dynamic caching</li>
+                    <li>Local storage</li>
+                    <li>Background sync</li>
+                    <li>Web push notifications</li>
+                </ul>
+            </div>
+            <div class="section">
+                <ul>
+                    <li>HERRAMIENTAS</li>
+                    <li>Debug</li>
+                    <li>Compatibilidad</li>
+                    <li>Modulos</li>
+                    <li>Empaquetado</li>
+                    <li>Depurador navegador</li>
+                    <li>Babel</li>
+                    <li>Webpack</li>
+                    <li>NPM</li>
+                    <li>ESLint</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('>:D')
+    </script>
+
+</body>
+
+</html>

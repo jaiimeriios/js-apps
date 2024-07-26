@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Spread - Operator</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Rest Spread - Operator</h1>
+
+    <script>
+        console.warn("REST")
+        /*
+        Rest PARAMETER is an improved way to handle function parameter, allowing us to more easily handle various input as parameters in a function. The rest parameter syntax allows us to represent an indefinite number of arguments as an array. With the help of a rest parameter a function can be called with any number of arguments, no matter how it was defined.
+        */
+
+        const sumREST = (...toAdd) => {
+            let result = 0;
+            for (let i = 0; i < toAdd.length; i++) {
+                result += toAdd[i];
+            }
+            return result
+        };
+        console.log(sumREST(1, 2, 3, 4, 5))
+
+
+
+        function sumExample(...theArgs) {
+            return theArgs.reduce((previous, current) => {
+                return previous + current;
+            });
+        }
+        console.log(sumExample(1, 2, 3));
+        console.log(sumExample(1, 2, 3, 4));
+
+
+
+
+        function fun(a, b, ...c) {
+            console.log(`${a} ${b}`);
+            console.log(c);
+            console.log(c[0]);
+            console.log(c.length);
+            console.log(c.indexOf('Lorem'));
+            console.log(c.indexOf('Ipsum'));
+        }
+        fun('🔥', '💧', 'Lorem', 'Ipsum', 'Dolor Sit Amet');
+
+
+
+
+
+
+
+        console.warn("SPREAD")
+        /*
+        Spread operator allows an iterable to expand in places where 0+ arguments are expected. It is mostly used in the variable array where there is more than 1 values are expected. It allows us the privilege to obtain a list of parameters from an array.
+        */
+        const numbers = [1, 2, 3];
+
+        console.log(numbers);
+        console.log(...numbers);
+        console.log(Math.max(...numbers));
+
+
+        const sum = (x, y, z) => {
+            return x + y + z;
+        }
+        console.log(sum(...numbers));
+
+
+
+        let arr1 = [1, 2, 3];
+        let arr2 = [4, 5, 6];
+
+        arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+
+
+
+        const user1 = {
+            name: 'Jen',
+            age: 22,
+        };
+        const user2 = {
+            name: "Andrew",
+            location: "Philadelphia"
+        };
+
+        const mergedUsers = { ...user1, ...user2 };
+        console.log(mergedUsers)
+
+
+
+    </script>
+</body>
+
+</html>

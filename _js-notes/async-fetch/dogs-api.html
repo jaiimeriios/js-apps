@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <title>Dogs API</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-size: 10px;
+            font-family: sans-serif;
+        }
+
+        .app {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+        }
+
+        .header select {
+            font-size: 2rem;
+            padding: 4px 10px;
+            margin-top: 10px;
+        }
+
+        .slideshow {
+            background-color: #f3f3f3;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            height: 70vh;
+            margin: 15px auto 0 auto;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            opacity: 0;
+            transform: scale(1);
+            transition: all 1000ms ease-in;
+        }
+
+        .slide:nth-last-child(2) {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+        <div class="header">
+            <h1>Dog App</h1>
+            <div id="breed"></div>
+        </div>
+        <div class="slideshow" id="slideshow"></div>
+    </div>
+
+    <script>
+
+        const URL = "https://dog.ceo/api"
+        let timer
+        let deleteFirstPhotoDelay
+
+        const start = async () => {
+            try {
+                const response = await fetch(`${URL}/breeds/list/all`)
+                const data = await response.json()
+                createBreedList(data.message)
+            } catch (e) {
+                console.log("There was a problem fetching the breed list.")
+            }
+        }
+        start()
+
+
+        const createBreedList = (breedList) => {
+            // console.log(Object.keys(breedList))
+            document.getElementById("breed").innerHTML = `
+                <select onchange="loadByBreed(this.value)">
+                    <option>Choose a dog breed</option>
+                    ${Object.keys(breedList).map(function (breed) {
+                        return `<option>${breed}</option>`
+                    }).join('')}
+                </select>
+                `
+        }
+
+        const  loadByBreed = async (dogBreed) => {
+            if (dogBreed != "Choose a dog breed") {
+                const response = await fetch(`${URL}/breed/${dogBreed}/images`)
+                const data = await response.json()
+                createSlideshow(data.message)
+            }
+        }
+
+        const createSlideshow = (images) => {
+            //console.log(images)
+
+            let currentPosition = 0
+            clearInterval(timer)
+            clearTimeout(deleteFirstPhotoDelay)
+
+
+            const nextSide = () => {
+                document.getElementById("slideshow").insertAdjacentHTML("beforeend", `<div class="slide" style="background-image: url('${images[currentPosition]}')"></div>`)
+
+                deleteFirstPhotoDelay = setTimeout(function () {
+                    document.querySelector(".slide").remove()
+                }, 3000)
+
+                if (currentPosition + 1 >= images.length) {
+                    currentPosition = 0
+                } else {
+                    currentPosition++
+                }
+            }
+
+
+            if (images.length > 1) {
+                document.getElementById("slideshow").innerHTML = `
+                    <div class="slide" style="background-image: url('${images[0]}')"></div>
+                    <div class="slide" style="background-image: url('${images[1]}')"></div>
+                `
+                currentPosition += 2
+                
+                if(images.length == 2) {
+                    currentPosition =0
+                }
+
+                timer = setInterval(nextSide, 3500)
+
+            } else {
+                document.getElementById("slideshow").innerHTML = `
+                    <div class="slide" style="background-image: url('${images[0]}')"></div>
+                    <div class="slide"></div>
+                `
+            }
+        }
+    </script>
+
+</body>
+
+</html>

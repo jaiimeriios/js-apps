@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Callback</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #8e9fde;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 25px auto 10px auto;
+        }
+
+        #content {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: solid 1px #e0eaf5;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .025);
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        #content>div {
+            min-width: 15%;
+            border: solid 1px #dee3f7;
+            margin: 0px 4px 15px 4px;
+            border-radius: 3px;
+            text-align: center;
+            user-select: none;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, .085);
+        }
+
+        #content>div p {
+            font-size: 14px;
+            margin: -8px 0 8px 0;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- https://www.youtube.com/watch?v=aKPcs-EIzZI -->
+
+    <h1>API Callback</h1>
+
+    <div id="content"></div>
+
+    <script>
+
+        // function imagenRelleno(source, nombre) {
+        //     const div = document.createElement('div');
+        //     const img = document.createElement('img');
+        //     div.classList.add('section')
+        //     img.src = source;
+        //     img.alt = nombre
+        //     document.querySelector('#content').appendChild(div).appendChild(img);
+        // }
+
+        class rellenoImagen {
+            constructor(imgSource, nombre) {
+                this.source = imgSource
+                this.alt = nombre
+                this.nombre = nombre
+            }
+            crearElement() {
+                const content = document.querySelector('#content').appendChild(document.createElement('div'));
+                const img = document.createElement('img');
+                const p = document.createElement('p');
+
+                img.src = this.source;
+                img.alt = this.nombre
+                p.innerHTML = this.nombre
+
+                content.insertAdjacentElement('afterbegin', p);
+                content.insertAdjacentElement('afterbegin', img);
+            }
+        }
+
+        for (let i = 1; i <= 151; i++) {
+            console.log(i)
+            fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.info('DATOS::', data)
+                    new rellenoImagen(data.sprites.front_default, data.name).crearElement()
+                })
+        }
+
+    </script>
+</body>
+</html>

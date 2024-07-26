@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sort Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Array Sort Method</h1>
+
+    <div id="content">
+        <h2>Sort</h2>
+        <p>
+            The sort() method sorts the elements of an array in place and returns the sorted array.
+        </p>
+    </div>
+
+    <script>
+
+        const characters = [
+            {
+                name: 'Luke Skywalker',
+                height: '172',
+                mass: '77',
+                eye_color: 'blue',
+                gender: 'male',
+            },
+            {
+                name: 'Darth Vader',
+                height: '202',
+                mass: '136',
+                eye_color: 'yellow',
+                gender: 'male',
+            },
+            {
+                name: 'Leia Organa',
+                height: '150',
+                mass: '49',
+                eye_color: 'brown',
+                gender: 'female',
+            },
+            {
+                name: 'Anakin Skywalker',
+                height: '188',
+                mass: '84',
+                eye_color: 'blue',
+                gender: 'male',
+            }
+        ];
+
+
+
+        const sortedByMass = characters.sort((a, b) => {
+            return a.mass - b.mass
+        })
+        const sortedByHeight = characters.sort((a, b) => {
+            return a.height - b.height
+        })
+        const sortedByName = characters.sort((a, b) => {
+            if (a.name < b.name) {
+                return -1
+            }
+        })
+        const sortedByGender = characters.sort((a) => {
+            if (a.gender === "female") {
+                return -1
+            }
+        })
+        console.log(sortedByMass)
+        console.log(sortedByHeight)
+        console.log(sortedByName)
+        console.log(sortedByGender)
+
+
+
+
+
+
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.sort();
+        fruits.reverse();
+        console.log(fruits)
+
+
+
+
+        let employees = [
+            {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 27,
+                joinedDate: 'December 15, 2017'
+            },
+
+            {
+                firstName: 'Daniel',
+                lastName: 'Mitchel',
+                age: 25,
+                joinedDate: 'January 15, 2019'
+            },
+
+            {
+                firstName: 'Zion',
+                lastName: 'Albert',
+                age: 30,
+                joinedDate: 'February 15, 2011'
+            }
+        ];
+
+        const employeesByAge = employees.sort((a, b) => {
+            return b.age - a.age;
+        });
+
+        console.log(employeesByAge)
+
+
+
+
+        const students = [
+            { name: "Alex", grade: 15 },
+            { name: "Devlin", grade: 15 },
+            { name: "Eagle", grade: 13 },
+            { name: "Sam", grade: 14 },
+        ];
+   
+        const studentsSort = students.sort((firstItem, secondItem) => {
+            return firstItem.grade - secondItem.grade
+        })
+
+        console.log(studentsSort)
+
+
+    </script>
+</body>
+
+</html>

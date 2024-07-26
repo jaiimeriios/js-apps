@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Order</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: #3f4c94;
+            margin: 25px auto 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Fizz Buzz</h1>
+
+    <script>
+        function fizzbuzz(num) {
+
+            const divisible = (num, divisor) => num % divisor === 0
+
+            if (divisible(num, 3) && divisible(num, 5)) {
+                return 'fizzbuzz'
+            }
+            if (divisible(num, 3)) {
+                return 'fizz'
+            }
+            if (divisible(num, 5)) {
+                return 'buzz'
+            }
+            return num
+        }
+
+        function printNumeros(num) {
+            for (let i = 0; i <= num; i++) {
+                console.log(`${i}: ${fizzbuzz(i)}`)
+            }
+        }
+
+        printNumeros(1000)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Filter Method</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #8e9fde;
+            --bg-color: #272b31;
+            --bg-content-color: #23262c;
+            --color-code: #ec6e6e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: var(--bg-color);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 25px auto 10px auto;
+        }
+
+        #content {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-content-color);
+            border-radius: 3px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.025);
+        }
+
+        #content h2 {
+            color: var(--secondary-color);
+            margin: 0 0 15px 0;
+        }
+
+        #content code {
+            color: var(--color-code);
+        }
+
+        #content p {
+            margin: 0 0 10px 0;
+        }
+
+        #content ul {
+            list-style-type: circle;
+            padding: 0 0 0 20px;
+        }
+
+        #content ul li {
+            line-height: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>This</h1>
+
+    <div id="content">
+        <p>
+            The <code>this</code> keyword refers to the object it belongs to
+        </p>
+        <p>It has different values depending on where it is used:</p>
+        <ul>
+            <li>In a method, this refers to the owner object.</li>
+            <li>Alone, this refers to the global object.</li>
+            <li>In a function, this refers to the global object.</li>
+            <li>In a function, in strict mode, this is undefined.</li>
+            <li>In an event, this refers to the element that received the event.</li>
+            <li>Methods like <code>call()</code>, and <code>apply()</code> can refer this to any object.</li>
+        </ul>
+
+    </div>
+
+    <script>
+
+        // 'use strict'
+        console.log("this");
+        const persona = { nombre: 'lorem' };
+
+        function saludar1() {
+            console.log(this.nombre);
+        };
+        saludar1.call(persona);
+
+
+
+        function saludar2(tiempo) {
+            console.log(`Hola ${this.nombre} ${tiempo}`);
+        };
+        saludar2.call(persona, 'buen dia');
+        saludar2.apply(persona, ['buena tarde']);
+
+
+
+
+        const obj1 = {
+            nombre: 'Ipsum',
+            saludar() {
+                console.log(`saludo de objeto ${this.nombre}`);
+            }
+        };
+        obj1.saludar();
+
+        const afuera = obj1.saludar;
+        afuera.call(obj1);
+
+
+
+
+        const obj2 = {
+            nombre: 'Dolor',
+            saludar() {
+                setTimeout(() => {
+                    console.log(`saludo de objeto 2 ${this.nombre}`);
+                }, 800);
+            },
+            despedir() {
+                setTimeout(function () {
+                    console.log(`saludo de objeto 2 ${this.nombre}`);
+                }.bind(this), 900);
+            }
+        };
+
+        obj2.saludar();
+        obj2.despedir();
+
+
+
+
+
+
+
+
+
+
+        const video = {
+            title: 'a',
+            tags: ['🔥', '⚡', '💧'],
+            play() {
+                console.log('play::', this)
+            },
+
+            tagsArrow() {
+                this.tags.forEach((tag) => {
+                    console.log(`Arrow:: ${tag}`);
+                })
+            },
+            tagsFunc() {
+                this.tags.forEach(function (tag) {
+                    console.log(`Func:: ${tag}`);
+                })
+            },
+
+            addTitleArrow() {
+                this.tags.forEach((tag) => {
+                    console.log(`title Arrow "${this.title}" ${tag}`);
+                })
+            },
+            addTitleFunc() {
+                this.tags.forEach(function (tag) {
+                    console.log(`title Func "${this.title}" ${tag}`);
+                }, this)
+            }
+
+        }
+        video.stop = function () {
+            console.log('stop::', this)
+        }
+        video.rewind = () => {
+            console.log('rewind::', this)
+        }
+        video.play();
+        video.stop();
+        video.rewind();
+
+        video.tagsArrow();
+        video.tagsFunc();
+
+        video.addTitleArrow();
+        video.addTitleFunc();
+
+
+
+
+        function Video(title) {
+            this.title = title;
+            console.log(this.title);
+        };
+        const v = new Video('New Video Titulo');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

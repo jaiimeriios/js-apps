@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<script>
+		function calculateTempConv(myTempField) {
+			var myTemperature = myTempField.value;
+			var myTempUnit = myTempField.name;
+			//alert(myTempUnit);
+			if (myTempUnit == "ctemp") {
+				//celsius feild was changed or clicked
+				// c x 9/5 + 32
+				var fahrTemp = myTemperature * 9 / 5 + 32
+				document.getElementById("ftemp").value = fahrTemp;
+				document.getElementById("myTempImg").width = myTemperature * 3;
+			} else if (myTempUnit == "ftemp") {
+				//fahrenheit field was clicked or changed
+				//(f - 32) x 5/9 = c
+				var celTemp = (myTemperature - 32) * 5 / 9
+				document.getElementById("ctemp").value = celTemp;
+				document.getElementById("myTempImg").width = myTemperature * 3;
+			} return false;
+		}
+	</script>
+
+</head>
+
+<body>
+	<h3>Temperature Conversion</h3>
+
+	Fahrenheit: <input type="text" name="ftemp" id="ftemp" value="" size="3" onblur="calculateTempConv(this);" />
+	Celsius: <input type="text" name="ctemp" id="ctemp" value="" size="3" onblur="calculateTempConv(this);" />
+	<br />
+	<br />
+	<img id="myTempImg"
+		src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Auto_Racing_Red.svg/800px-Auto_Racing_Red.svg.png"
+		width="300" height="10" />
+</body>
+
+</html>

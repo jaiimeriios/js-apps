@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Amazon Price Widget</title>
+	<style>
+		body {
+			background-color: #fff;
+		}
+
+		#envuelto {
+			width: 960px;
+			margin: 0 auto;
+		}
+
+		h1 {
+			font-size: 20px;
+		}
+
+		img {
+			margin: 5px;
+		}
+
+		#myFaves {
+			float: left;
+			clear: both;
+			margin-right: 30px;
+		}
+
+		a {
+			font-family: Tahoma, Geneva, sans-serif;
+			font-size: 21px;
+			font-style: italic;
+		}
+
+		ul {
+			margin: 50px;
+			list-style-type: none;
+		}
+
+		ul li {
+			padding-left: 50px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+		}
+
+		.clearfix:after {
+			content: ".";
+			display: block;
+			clear: both;
+			visibility: hidden;
+			line-height: 0;
+			height: 0;
+		}
+
+		.clearfix {
+			display: inline-block;
+		}
+	</style>
+	<script>
+		function getProducts() {
+			var source = document.getElementById("source").value;
+			var sourceArr = new Array();
+			sourceArr = source.split('<div id="result_');
+			//alert(sourceArr[2]);
+			var asinArr = new Array();//amazon product ID's
+			var namesArr = new Array();//product names
+			var newPricesArr = new Array();//new prices
+			var usedPricesArr = new Array();//used prices
+			var thumbsArr = new Array();//product image URLs
+			for (i = 1; i < sourceArr.length; i++) {
+				var sourceTemp = sourceArr[i];//get value of array at index i
+				var asinTempArr = sourceTemp.split("\"");//escape the quote using back-slash
+				var asin = asinTempArr[4];
+				var nameTempArr = sourceTemp.split('<span class="lrg bold">');
+				if (nameTempArr.length == 1) {
+					continue;
+				}
+				var tempName = nameTempArr[1];
+				var nameTempArr2 = tempName.split("</span>");
+				var name = nameTempArr2[0];
+				//alert(name);
+				namesArr[asin] = name;
+				var pricesTempArr = sourceTemp.split('<span class="price bld">');
+				var priceTemp = 0;
+				if (pricesTempArr.length == 1) {
+					pricesTempArr = sourceTemp.split('<span class="bld lrg red">');
+					priceTemp = pricesTempArr[1];
+					priceTempArr = priceTemp.split('</span>');
+					var price = priceTempArr[0];
+					newPricesArr[asin] = price;//store as new price
+					//alert(asin + " [1]: " + price);
+				} else {
+					//extract New Price
+					if (pricesTempArr.length == 2) {
+						priceTemp = pricesTempArr[1];//dirty
+						priceTempArr = priceTemp.split('</span>');
+						var price = priceTempArr[0];
+						var productCondition = priceTempArr[1];
+						if (productCondition.indexOf("new") == 1) {
+							newPricesArr[asin] = price;//store as new price
+						}
+						if (productCondition.indexOf("used") == 1) {
+							usedPricesArr[asin] = price;//store as new price
+						}
+						//alert(asin + " [2]: " + price);
+					}
+					if (pricesTempArr.length == 3) {
+						priceTemp = pricesTempArr[1];//dirty
+						priceTempArr = priceTemp.split('</span>');
+						var price = priceTempArr[0];
+						var productCondition = priceTempArr[1];
+						if (productCondition.indexOf("new") == 1) {
+							newPricesArr[asin] = price;//store as new price
+						}
+						if (productCondition.indexOf("used") == 1) {
+							usedPricesArr[asin] = price;//store as new price
+						}
+						//alert(asin + " [3]: " + price);
+					}
+					//alert(asin + " : " + priceTemp);
+				}
+				//extract the thumbnail URL
+				var thumbArr = sourceTemp.split('src="');
+				var thumbTemp = thumbArr[1];//dirty image URL
+				var thumbTempArr = thumbTemp.split('"');
+				var thumbURL = thumbTempArr[0];//clean URL
+				//alert(asin + " : " + thumbURL);
+				thumbsArr[asin] = thumbURL;
+				asinArr.push(asin);
+			}
+
+			var products = "<table border=1>";
+			for (x = 0; x < asinArr.length; x++) {
+				asin = asinArr[x];//product code
+				name = namesArr[asin];//name or title
+				newPrice = newPricesArr[asin];
+				usedPrice = usedPricesArr[asin];
+				thumbURL = thumbsArr[asin];
+				products += "<tr><td><a href='http://www.amazon.com/gp/product/" + asin + "' target='_blank'><img src='" + thumbURL + "'></a></td><td><h3><a href='http://www.amazon.com/gp/product/" + asin + "' target='_blank'>" + name + "</a></h3>New Price:<br/>Used Price:</td></tr>";
+
+			}
+			products += "</table>";
+			document.getElementById("test").innerHTML = products;
+		}
+
+	</script>
+</head>
+
+<body>
+	<div id="envuelto">
+		<a href="http://www.amazon.com/" target="_blank" <h3><img src="amazon-logo.png" width="371" height="75"
+				alt="amazon" /></a>
+		Amazon Widget V.1</h3>
+
+		<textarea id="source" rows="15" cols="65"></textarea>
+		<br /><br />
+		<button onclick="getProducts();">Get Products</button>
+		<br /><br />
+		<div id="test"></div>
+
+	</div>
+
+	<script>
+
+	</script>
+</body>
+
+</html

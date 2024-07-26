@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>Modal</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+
+    <style>
+        .modal-overlay {
+            display: none;
+        }
+
+        .modal-overlay.show,
+        .modal-overlay.close {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.show {
+            animation: aparecer 100ms ease-in-out forwards;
+        }
+
+        .modal-overlay.close {
+            animation: desaparecer 200ms ease-in forwards;
+        }
+
+        .modal-overlay>div {
+            background-color: #fff;
+            width: 250px;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                width: 0;
+                height: 0;
+                top: 50%;
+                left: 50%;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            to {
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        @keyframes desaparecer {
+            0% {
+                display: block;
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            90% {
+
+                opacity: 0;
+                width: 100%;
+                height: 0;
+                top: 50%;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                display: none;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Open Modal</h1>
+    </div>
+
+
+    <div class="container">
+
+        <button data-show="modal-1">Modal</button>
+        <button data-show="modal-2">Modal 2</button>
+
+
+
+        <div class="modal-overlay" id="modal-1">
+            <div>
+                <button data-close="modal-1">Close</button>
+                <h2>Modal 1</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni explicabo et ut reprehenderit
+                    quisquam quia ex nesciunt odit distinctio voluptatum omnis dicta mollitia nulla accusantium, saepe
+                    quaerat! Ea, laudantium?</p>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="modal-2">
+            <div>
+                <button data-close="modal-2">Close</button>
+                <h2>Modal 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid magni explicabo et ut reprehenderit
+                    quisquam quia ex nesciunt odit distinctio voluptatum omnis dicta mollitia nulla accusantium, saepe
+                    quaerat! Ea, laudantium?</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        const dataShow = document.querySelectorAll('[data-show]');
+        const dataClose = document.querySelectorAll('[data-close]');
+        
+        dataShow.forEach((e) => {
+            e.addEventListener("click", () => {
+                openModal(`#${e.dataset.show}`)
+            })
+        })
+        dataClose.forEach((e) => {
+            e.addEventListener("click", () => {
+                closeModal(`#${e.dataset.close}`)
+            })
+        })
+
+        const openModal = (modal) => {
+            document.querySelector(modal).classList.remove("close")
+            document.querySelector(modal).classList.add("show")
+        }
+        const closeModal = (modal) => {
+            document.querySelector(modal).classList.remove("show")
+            document.querySelector(modal).classList.add("close")
+        }
+    </script>
+</body>
+
+</html>

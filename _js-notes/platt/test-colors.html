@@ -1,0 +1,94 @@
+<html>
+
+<head>
+	<style>
+		.style1 {
+			font-family: serif;
+		}
+
+		.style2 {
+			font-family: Impact;
+		}
+
+		.style3 {
+			font-family: sans-serif;
+		}
+
+		.style4 {
+			font-family: serif;
+		}
+
+		.style5 {
+			font-family: sans-serif;
+		}
+
+		/*
+Add 5 different styles with different sizes and fonts (seriff and sans)
+Limit size between sizes +1 to +5 equivalent in pts
+*/
+	</style>
+	<script>
+		/*
+		- Fix this function so you don't get two of same colors twice in a row
+		and you don't see the same color "words" twice in a row
+		- Apply a random style to each color/word
+		- Make sure all colors are used up before starting over with a new sequence
+		*/
+		function getRandColors() {
+			var colors = "Red, Purple, Green, Cyan, Orange, Yellow, Pink";
+			colors = colors.replace(", ", ",");
+			var colorsArr = colors.split(",");
+			var colorsTempArr = new Array();
+			colorsTempArr = colorsArr;
+
+			var testColors = "";
+			var lastUsedColor = "";
+			var lastUsedColorWord = "";
+			for (i = 0; i < 60; i++) {
+				var randNum1 = Math.floor(Math.random() * colorsArr.length);
+				var randNum2 = Math.floor(Math.random() * colorsArr.length);
+				var randColor1 = colorsArr[randNum1];//word
+				var randColor2 = colorsArr[randNum2];//color
+				if (randColor1 == lastUsedColor) {
+					//get another color
+					for (k = 0; k < 1000; k++) {
+						randNum1 = Math.floor(Math.random() * colorsArr.length);
+						randColor1 = colorsArr[randNum1];
+						if (randColor1 != lastUsedColor) {
+							break;
+						}
+					}
+				}
+				if (randColor2 == lastUsedColorWord) {
+					//get another color
+					for (j = 0; j < 1000; j++) {
+						randNum2 = Math.floor(Math.random() * colorsArr.length);
+						randColor2 = colorsArr[randNum2];
+						if (randColor2 != lastUsedColorWord) {
+							break;
+						}
+					}
+				}
+				lastUsedColor = randColor1;
+				lastUsedColorWord = randColor2;
+				var size = Math.floor(Math.random() * 5) + 1;
+				testColors += "<font class=style" + size + " size=" + size + " color=" + randColor2 + ">" + randColor1 + "</font>";
+			}
+			document.getElementById("colors").innerHTML = testColors;
+		}
+	</script>
+</head>
+
+<body bgcolor=#000000 text=#ffffff link=#00c0c0 vlink=#00a0a0 onload="getRandColors();">
+	<h1>Say The Colors Out Loud, Not The Words</h1>
+
+	<div id="colors"></div>
+	<br />
+	<button onclick="getRandColors();">Click To Get New Random Colors</button> OR F5 To Reload
+
+	<script>
+
+	</script>
+</body>
+
+</html>

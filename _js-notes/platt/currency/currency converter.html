@@ -1,0 +1,95 @@
+<html>
+
+<head>
+	<title>Currency Converter</title>
+	<script>
+		//Script written by: my nombre aqui, octubre 29. 2012
+
+		function convertUSDollars(currencyOption) {
+			var currencyVal = currencyOption.value;
+			//alert(currencyVal);
+			var cFactorsArr = new Array();//conversion factors
+			cFactorsArr["euros"] = 0.7749;
+			cFactorsArr["canadian"] = 1.0002;
+			cFactorsArr["pounds"] = 0.6234;
+			cFactorsArr["pesos"] = 13.0927;
+			cFactorsArr["yen"] = 79.81;
+			cFactorsArr["rupees"] = 54.08;
+			var conversionFactor = cFactorsArr[currencyVal];
+
+			var currencySymbolArr = new Array();//currency symbols
+			currencySymbolArr["euros"] = "&euro;";
+			currencySymbolArr["canadian"] = "CA $";
+			currencySymbolArr["pounds"] = "&pound;";
+			currencySymbolArr["pesos"] = "$";
+			currencySymbolArr["yen"] = "&yen;";
+			currencySymbolArr["rupees"] = "&#8360;";
+			var currencySymbol = currencySymbolArr[currencyVal];
+
+			var usDollarAmount = document.getElementById("usdollars").value;
+			if (isNaN(usDollarAmount)) {
+				document.getElementById("amount").innerHTML = "Please enter a dollar amount";
+				return false;
+			}
+			if (isNaN(conversionFactor)) {
+				document.getElementById("amount").innerHTML = "Please select a currency";
+				return false;
+			}
+			//do the currency conversion by multiplying US $ with conv factor
+			var convertedAmount = usDollarAmount * conversionFactor;
+			convertedAmount = Math.round(convertedAmount * 100) / 100;
+			//print the converted amount
+			document.getElementById("amount").innerHTML = convertedAmount;
+
+			//print the symbol in the span
+			var currSymbol = currencySymbol;
+			document.getElementById("currencySymbol").innerHTML = currSymbol;
+
+			//switch the picture of the currency
+			var moneyImgArr = new Array();
+			moneyImgArr["default"] = "images/dollar.png";
+			moneyImgArr["euros"] = "images/euro.png";
+			moneyImgArr["canadian"] = "images/canadollar.png";
+			moneyImgArr["pounds"] = "images/pound.jpg";
+			moneyImgArr["pesos"] = "images/pesos.jpg";
+			moneyImgArr["yen"] = "images/yen.jpg";
+			moneyImgArr["rupees"] = "images/rupees.png";
+			var moneyImgs = moneyImgArr[currencyVal];
+			//alert(currencyVal);
+			document.getElementById("moneyImg").src = moneyImgs;
+
+		}
+
+		function updateAmount() {
+			var el = document.getElementById("currency");
+			convertUSDollars(el);
+		}
+
+
+	</script>
+
+</head>
+
+<body>
+	<h3>Currency Converter</h3>
+	US Dollars
+	<input name="usdollars" id="usdollars" type="" size="5" value="" onblur="updateAmount();" />
+
+	<select name="currency" id="currency" onchange="convertUSDollars(this);">
+		<option>Select Currency</option>
+		<option value="euros">Euros</option>
+		<option value="canadian">Canadian Dollars</option>
+		<option value="pounds">British Pound</option>
+		<option value="pesos">Mexican Pesos</option>
+		<option value="yen">Yen</option>
+		<option value="rupees">Rupees</option>
+	</select><br />
+
+	<h4><span id="currencySymbol"> #</span> <span id="amount"> 0.00</span></h4>
+	<br />
+
+	<img src="images/dollar.jpg" width="247" id="moneyImg" />
+
+</body>
+
+</html>

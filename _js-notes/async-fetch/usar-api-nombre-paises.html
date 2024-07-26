@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Usar APIs</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: #3f4c94;
+            margin: 25px auto 10px auto;
+        }
+
+        .contenedor {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: solid 1px #e0eaf5;
+            box-shadow: 2px 2px 4px 2px rgb(0 0 0 / 3%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .contenedor p {
+            font-weight: 600;
+            margin: 0 6px 0 0;
+            display: inline-block;
+        }
+
+        .contenedor span {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <h1>Como Usar APIs</h1>
+        <h2>Application Program Interface</h2>
+    </div>
+
+    <div class="contenedor">
+        <p id="nombre"></p>
+        <div>
+            <p id="pais1"></p><span id="probabilidad1"></span>
+        </div>
+        <div>
+            <p id="pais2"></p><span id="probabilidad2"></span>
+        </div>
+        <div>
+            <p id="pais3"></p><span id="probabilidad3"></span>
+        </div>
+
+        <img id="imagen" src="" alt="">
+    </div>
+
+    <script>
+
+
+        const URL = "https://api.nationalize.io?name="
+        const nombreP = document.getElementById("nombre")
+        const paisP1 = document.getElementById("pais1")
+        const paisP2 = document.getElementById("pais2")
+        const paisP3 = document.getElementById("pais3")
+
+        const probabilidad1 = document.getElementById("probabilidad1")
+        const probabilidad2 = document.getElementById("probabilidad2")
+        const probabilidad3 = document.getElementById("probabilidad3")
+
+        const traerPais = async (name) => {
+            const response = await fetch(`${URL}${name}`)
+
+            // if(!response.OK) {
+            //     let oops = "404 no se encontro nada"
+            //     throw new Error(oops)
+            // }
+
+            const nombre = response.json()
+            return nombre
+        }
+
+        const mostrarNombre = (regreandoDatos) => {
+            console.log(regreandoDatos)
+            nombreP.innerText = regreandoDatos.name
+            paisP1.innerText = regreandoDatos.country[0].country_id
+            paisP2.innerText = regreandoDatos.country[1].country_id
+            paisP3.innerText = regreandoDatos.country[2].country_id
+            probabilidad1.innerText = regreandoDatos.country[0].probability
+            probabilidad2.innerText = regreandoDatos.country[1].probability
+            probabilidad3.innerText = regreandoDatos.country[2].probability
+
+
+        }
+        traerPais("Rios").then(mostrarNombre)
+
+
+
+        // async await
+
+        // const traerPais = async () => {
+        //     const response = await fetch(`${URL}jaime`)
+        //     const nombre = await response.json()
+        //     console.log(nombre)
+        //     nombreP.innerHTML = nombre.name
+        //     paisP.innerHTML = nombre.country[0].country_id
+        //     return nombre
+        // }
+
+        // traerPais()
+
+
+        // forma fetch then
+        // fetch(`${URL}jaime`)
+        // .then(res => res.json())
+        // .then(data => mostarNombre(data))
+
+        // const mostarNombre = (data) => {
+        //     console.log(data)
+        //     nombreP.innerHTML = data.name
+        //     paisP.innerHTML = data.country[0].country_id
+        // }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

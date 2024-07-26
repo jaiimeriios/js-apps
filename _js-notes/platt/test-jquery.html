@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI Draggable Test</title>
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+<script>
+
+$(document).ready(function(){
+  $("#draggable").draggable();
+  $("#draggable").click(function(){
+	  $(this).animate({left:'250px'});
+	}); 
+  
+});
+</script>
+</head>
+<body>
+ 
+<div id="draggable">
+    <img src="http://ecx.images-amazon.com/images/I/51qaKt5Ek2L._AA160_.jpg">
+	<p>Drag me around</p>
+</div>
+ 
+ 
+</body>
+</html>

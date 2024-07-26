@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="html5 Template" />
+    <title>Templates</title>
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <style>
+        :root {
+            --primary-color: #3f4c94;
+            --secondary-color: #8e9fde;
+            --third-color: #1035b9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f1f4f7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .container {
+            width: 96%;
+            max-width: 1200px;
+            height: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: solid 1px #e0eaf5;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .025);
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .container.content>div {
+            margin: 0 auto 20px auto;
+            width: 100%;
+            max-width: 260px;
+            padding: 10px;
+            border-radius: 3px;
+            border: solid 1px #dee3f7;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, .085);
+        }
+
+        .container.content h2 {
+            font-size: 1.5em;
+            color: var(--third-color);
+            margin: 0 auto 10px auto;
+            flex: 1 0 100%;
+            text-align: center;
+        }
+
+        .container.content>div h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+
+        .container.content>div p {
+            font-size: .9rem;
+            color: steelblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Templates</h1>
+    </div>
+
+    <div class="container content" id="content-posts">
+        <h2>Template Markup</h2>
+
+        <template id="template-data">
+            <div>
+                <h3 id="template-heading"></h3>
+                <p id="template-content"></p>
+            </div>
+        </template>
+    </div>
+
+    <div class="container content" id="content-comments">
+        <h2>Template JS</h2>
+    </div>
+
+
+    <script type="text/javascript">
+
+        const URL = 'https://jsonplaceholder.typicode.com'
+
+
+
+
+        // FETCH - markup template
+
+        // fetch(`${URL}/posts`)
+        //     .then(response => response.json())
+        //     .then(data => agarrarDatos(data));
+
+
+        const getDataPosts = async () => {
+            const response = await fetch(`${URL}/posts`)
+            const data = await response.json()
+            agarrarDatos(data)
+        }
+
+        const agarrarDatos = (data) => {
+            const content = document.getElementById('content-posts')
+
+            data.forEach((e, i) => {
+                let template = document.getElementById('template-data').content.cloneNode(true)
+                let templateHeading = template.getElementById("template-heading")
+                let templateContent = template.getElementById("template-content")
+
+                templateHeading.innerHTML = `${data[i].id} ${data[i].title}`
+                templateContent.innerHTML = `${data[i].title}`
+                content.appendChild(template)
+            })
+
+        }
+
+        getDataPosts()
+
+
+
+        // ASYNC AWAIT - template
+
+        const getDataTodos = async () => {
+            const response = await fetch(`${URL}/todos`)
+            const data = await response.json()
+            parseData(data)
+        }
+
+        const parseData = (data) => {
+            const content = document.getElementById('content-comments')
+
+            data.forEach((e, i) => {
+                let template = `
+                    <div>
+                        <h3>${data[i].id} ${data[i].completed}</h3>
+                        <p>${data[i].title}</p>
+                    </div>
+                `
+                content.innerHTML += template
+            })
+        }
+
+        getDataTodos()
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
