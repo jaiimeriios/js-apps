@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://jaiimeriios.com/images/favicon.ico" />
+    <title>Fullstack Test - Users</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <div class="row text-center">
+            <h1>Fullstack Form</h1>
+            <h2 class="mt-2">Node, Express</h2>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <form id="users-form" class="col-md-6 col-lg-5 col-xl-4 mx-3 mx-md-0 p-4">
+                <div class="mb-3">
+                    <label for="user-first-name" class="form-label">First Name</label>
+                    <input id="user-first-name" class="form-control" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="user-last-name" class="form-label">Last Name</label>
+                    <input id="user-last-name" class="form-control" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="user-email" class="form-label">Email</label>
+                    <input id="user-email" class="form-control" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="user-handle" class="form-label">Handle</label>
+                    <input id="user-handle" class="form-control" type="text">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="table-responsive mt-4">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last</th>
+                        <th>Email</th>
+                        <th>Handle</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="content">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="users.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+body {
+    color: #fff;
+    background-color: #202a34;
+}
+/* Forma */
+form {
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Users Table */
+.table>:not(:first-child) {
+    border-top: 2px solid #604f1a;
+}
+
+table tr td {
+    outline: none;
+    vertical-align: middle;
+}
+
+
+table tr td p {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: .05rem;
+}
+table tr td[contenteditable='true'] p {
+    border: solid 2px #000;
+    outline: none;
+    border-radius: 0.2rem;
+}
+
+table tr td[contenteditable='true']:active p,
+table tr td[contenteditable='true']:focus p {
+    border-color: #2485f5;
+}
+
+table thead tr th:nth-child(5),
+table tbody tr td:nth-child(5),
+table thead tr th:nth-child(6),
+table tbody tr td:nth-child(6) {
+    width: 70px;
+}
+
+table tr td .btn {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.35rem;
+}
+
+
+
+/* todo */
+
+#todo-description {
+    min-height: 100px;
+    max-height: 300px;
+}
+
+
+.todo-section [contenteditable='true']{
+    border: solid 2px #c9a32e;
+    outline: none;
+    border-radius: 0.2rem;
+}
+.todo-section [contenteditable='true']:active,
+.todo-section [contenteditable='true']:focus {
+    border-color: #2a80ff;
+}
+
+
+.todo-section {
+
+}
+.todo-section.important-true {
+    background-color: green;
+
+}
+.todo-section.important-false {
+    background-color: red;
+}
