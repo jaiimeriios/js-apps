@@ -3,6 +3,8 @@
 *::before {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -21,7 +23,24 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.todos-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
 
-body {
+.todos-container .todo-single {
+    background-color: #1b3144;
+    border-radius: .35rem;
+    padding: 1rem;
+    min-width: 300px;
+    border-top: solid 3px #1b3144;
+}
 
+.todos-container .todo-single.important {
+    
+    background-color: #153551;
+    border-color: #519556;
 }
