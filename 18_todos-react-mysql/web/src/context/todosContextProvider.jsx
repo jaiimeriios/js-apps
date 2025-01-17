@@ -9,6 +9,9 @@ export const useTodosProvider = () => {
 
 // TodosProvider component to wrap the app and provide the context
 export const TodosProvider = ({ children }) => {
+
+    const URL = 'http://localhost:666/todos/'
+
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,7 +19,7 @@ export const TodosProvider = ({ children }) => {
     useEffect(() => {
         const fetchTodos = async () => {
             try {
-                const response = await fetch('http://localhost:666/todos/');
+                const response = await fetch(URL);
                 if (!response.ok) {
                     throw new Error('Failed to fetch todos');
                 }
@@ -33,7 +36,7 @@ export const TodosProvider = ({ children }) => {
 
     const addTodo = async (todo, description, important) => {
         try {
-            const response = await fetch('http://localhost:666/todos', {
+            const response = await fetch(URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,9 +51,7 @@ export const TodosProvider = ({ children }) => {
                 throw new Error('Error creating todo');
             }
 
-            const updatedTodosResponse = await fetch(
-                'http://localhost:666/todos'
-            );
+            const updatedTodosResponse = await fetch(URL);
             if (!response.ok) {
                 throw new Error('Failed to fetch todos');
             }
@@ -63,7 +64,7 @@ export const TodosProvider = ({ children }) => {
 
     const updateTodo = async (id, todo, description, important) => {
         try {
-            const response = await fetch(`http://localhost:666/todos/${id}`, {
+            const response = await fetch(`${URL}${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ export const TodosProvider = ({ children }) => {
 
     const deleteTodo = async (id) => {
         try {
-            const response = await fetch(`http://localhost:666/todos/${id}`, {
+            const response = await fetch(`${URL}${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
