@@ -9,11 +9,12 @@ export const useTodosProvider = () => {
 
 // TodosProvider component to wrap the app and provide the context
 export const TodosProvider = ({ children }) => {
+
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch todos from the backend
+
     useEffect(() => {
         const fetchTodos = async () => {
             try {
@@ -29,11 +30,10 @@ export const TodosProvider = ({ children }) => {
                 setLoading(false);
             }
         };
-
         fetchTodos();
     }, []);
 
-    // Create a new todo
+
     const addTodo = async (todo, description, important) => {
         try {
             const response = await fetch('http://localhost:666/todos', {
@@ -47,7 +47,6 @@ export const TodosProvider = ({ children }) => {
                     important
                 }),
             });
-
             if (!response.ok) {
                 throw new Error('Error creating todo');
             }
@@ -59,8 +58,10 @@ export const TodosProvider = ({ children }) => {
         }
     };
 
-    // Update an existing todo
-    const updateTodo = async (id, task, completed) => {
+
+    const updateTodo = async (id, todo, description, important) => {
+        console.log('asdfsadfdsa')
+
         try {
             const response = await fetch(`http://localhost:666/todos/${id}`, {
                 method: 'PUT',
@@ -68,15 +69,15 @@ export const TodosProvider = ({ children }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    task: task,
-                    completed: completed,
+                    todo,
+                    description, 
+                    important
                 }),
             });
-
+            
             if (!response.ok) {
                 throw new Error('Error updating todo');
             }
-
             const updatedTodo = await response.json();
             setTodos(
                 todos.map((todo) => (todo.id === id ? updatedTodo : todo))
@@ -85,6 +86,7 @@ export const TodosProvider = ({ children }) => {
             setError('Error updating todo');
         }
     };
+
 
     const deleteTodo = async (id) => {
         try {
@@ -95,7 +97,6 @@ export const TodosProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error('Error deleting todo');
             }
-
             setTodos(todos.filter((todo) => todo.id !== id));
         } catch (err) {
             setError('Error deleting todo');
