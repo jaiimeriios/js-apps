@@ -3,8 +3,6 @@ import mysql from 'mysql2/promise';
 import bcrypt from 'bcryptjs';
 dotenv.config();
 
-console.log(process.env)
-
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',

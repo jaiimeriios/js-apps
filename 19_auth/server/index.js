@@ -6,7 +6,7 @@ const app = express();
 dotenv.config();
 
 import userRoutes from './src/routes/userRoutes.js';
-// import userQuotes from './src/routes/userQuotes.js';
+import quoteRoutes from './src/routes/quoteRoutes.js';
 
 const PORT = process.env.PORT || 666;
 app.use(cors());
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/users', userRoutes);
-// app.use('/quotes', quoteRoutes);
+app.use('/quotes', quoteRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server listening on PORT ${PORT}`);
