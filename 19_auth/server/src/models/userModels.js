@@ -1,5 +1,9 @@
-const mysql = require('mysql2')
-const bcrypt = require('bcryptjs')
+import dotenv from 'dotenv';
+import mysql from 'mysql2/promise';
+import bcrypt from 'bcryptjs';
+dotenv.config();
+
+console.log(process.env)
 
 const pool = mysql.createPool({
     host: 'localhost',
@@ -7,12 +11,14 @@ const pool = mysql.createPool({
     password: process.env.DB_PW,
     database: 'todo',
 });
-const promisePool = pool.promise();
 
 // Register a new user
-const registerUser = async (username, email, password) => {
+export const registerUser = async (username, email, password) => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const [result] = await promisePool.query(
+    console.log(username);
+    console.log(email);
+    console.log(hashedPassword);
+    const [result] = await pool.query(
         'INSERT INTO auth_users (username, email, password) VALUES (?, ?, ?)',
         [username, email, hashedPassword]
     );
@@ -20,8 +26,8 @@ const registerUser = async (username, email, password) => {
 };
 
 // Find user by email (for login)
-const getUserByEmail = async (email) => {
-    const [rows] = await promisePool.query(
+export const getUserByEmail = async (email) => {
+    const [rows] = await pool.query(
         'SELECT * FROM auth_users WHERE email = ?',
         [email]
     );
@@ -29,17 +35,15 @@ const getUserByEmail = async (email) => {
 };
 
 // Validate password
-const validatePassword = async (inputPassword, storedPassword) => {
+export const validatePassword = async (inputPassword, storedPassword) => {
     return bcrypt.compare(inputPassword, storedPassword);
 };
 
 // Get user by ID
-const getUserById = async (id) => {
-    const [rows] = await promisePool.query('SELECT * FROM auth_users WHERE id = ?', [
-        id,
-    ]);
+export const getUserById = async (id) => {
+    const [rows] = await pool.query(
+        'SELECT * FROM auth_users WHERE id = ?',
+        [id]
+    );
     return rows[0];
 };
-
-
-module.exports = {registerUser, getUserByEmail, validatePassword, getUserById}

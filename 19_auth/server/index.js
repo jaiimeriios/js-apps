@@ -1,11 +1,12 @@
-const dotenv = require('dotenv');
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+import dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 const app = express();
 dotenv.config();
 
-const userRoutes = require('./src/routes/userRoutes.js')
+import userRoutes from './src/routes/userRoutes.js';
+// import userQuotes from './src/routes/userQuotes.js';
 
 const PORT = process.env.PORT || 666;
 app.use(cors());
