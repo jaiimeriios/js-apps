@@ -11,7 +11,6 @@ export const TodosTodo = () => {
     const [editIsImportant, setEditIsImportant] = useState(false);
 
     const handleDelete = (id) => {
-        console.log(id)
         deleteTodo(id);
     };
 

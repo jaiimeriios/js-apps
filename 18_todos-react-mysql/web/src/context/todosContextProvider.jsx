@@ -9,11 +9,9 @@ export const useTodosProvider = () => {
 
 // TodosProvider component to wrap the app and provide the context
 export const TodosProvider = ({ children }) => {
-
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
 
     useEffect(() => {
         const fetchTodos = async () => {
@@ -33,7 +31,6 @@ export const TodosProvider = ({ children }) => {
         fetchTodos();
     }, []);
 
-
     const addTodo = async (todo, description, important) => {
         try {
             const response = await fetch('http://localhost:666/todos', {
@@ -43,25 +40,28 @@ export const TodosProvider = ({ children }) => {
                 },
                 body: JSON.stringify({
                     todo,
-                    description, 
-                    important
+                    description,
+                    important,
                 }),
             });
             if (!response.ok) {
                 throw new Error('Error creating todo');
             }
 
-            const newTodo = await response.json();
-            setTodos([newTodo, ...todos]);
+            const updatedTodosResponse = await fetch(
+                'http://localhost:666/todos'
+            );
+            if (!response.ok) {
+                throw new Error('Failed to fetch todos');
+            }
+            const updatedTodos = await updatedTodosResponse.json();
+            setTodos(updatedTodos.reverse());
         } catch (err) {
             setError('Error creating todo');
         }
     };
 
-
     const updateTodo = async (id, todo, description, important) => {
-        console.log('asdfsadfdsa')
-
         try {
             const response = await fetch(`http://localhost:666/todos/${id}`, {
                 method: 'PUT',
@@ -70,11 +70,10 @@ export const TodosProvider = ({ children }) => {
                 },
                 body: JSON.stringify({
                     todo,
-                    description, 
-                    important
+                    description,
+                    important,
                 }),
             });
-            
             if (!response.ok) {
                 throw new Error('Error updating todo');
             }
@@ -87,13 +86,11 @@ export const TodosProvider = ({ children }) => {
         }
     };
 
-
     const deleteTodo = async (id) => {
         try {
             const response = await fetch(`http://localhost:666/todos/${id}`, {
                 method: 'DELETE',
             });
-
             if (!response.ok) {
                 throw new Error('Error deleting todo');
             }
