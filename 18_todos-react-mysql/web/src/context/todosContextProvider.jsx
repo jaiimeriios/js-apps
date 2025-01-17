@@ -23,7 +23,7 @@ export const TodosProvider = ({ children }) => {
                     throw new Error('Failed to fetch todos');
                 }
                 const data = await response.json();
-                setTodos(data);
+                setTodos(data.reverse());
             } catch (err) {
                 setError('Error fetching todos');
             } finally {
@@ -52,7 +52,7 @@ export const TodosProvider = ({ children }) => {
             }
 
             const newTodo = await response.json();
-            setTodos([...todos, newTodo]);
+            setTodos([newTodo, ...todos]);
         } catch (err) {
             setError('Error creating todo');
         }
