@@ -10,7 +10,6 @@ import {
 // Register a new user
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
-    console.log('result');
     try {
         const result = await registerUser(username, email, password);
         res.status(201).json({ message: 'User registered successfully' });
@@ -34,12 +33,15 @@ export const login = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
-
+        console.log(user)
         // Send token as a cookie
         res.cookie('token', token, { httpOnly: true }).json({
             message: 'Login successful',
+            token,
+            user
         });
     } catch (err) {
+        console.log(err);
         res.status(500).json({ error: 'Error logging in user' });
     }
 };
@@ -58,6 +60,7 @@ export const protectRoute = async (req, res, next) => {
         req.user = decoded;
         next();
     } catch (err) {
+        console.log(err);
         return res.status(401).json({ error: 'Token is not valid' });
     }
 };

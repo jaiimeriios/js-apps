@@ -9,7 +9,14 @@ import userRoutes from './src/routes/userRoutes.js';
 import quoteRoutes from './src/routes/quoteRoutes.js';
 
 const PORT = process.env.PORT || 666;
-app.use(cors());
+app.use(
+    cors({
+        origin: 'http://localhost:5173', // Frontend address (change if needed)
+        methods: ['GET', 'POST'],
+        credentials: true,
+    })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
