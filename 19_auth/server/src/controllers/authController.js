@@ -31,7 +31,7 @@ export const login = async (req, res) => {
         const token = jwt.sign(
             { userId: user.id, role: user.role },
             process.env.JWT_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: '5d' }
         );
         // Send token as a cookie
         res.cookie('token', token, {

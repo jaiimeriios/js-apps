@@ -21,8 +21,8 @@ const QuoteForm = () => {
             });
 
             const data = await response.json();
-            
             if (response.ok) {
+
                 console.log('Quote updated successfully!');
             } else {
                 console.log(data.error || 'Failed to update quote');

@@ -13,9 +13,6 @@ const pool = mysql.createPool({
 // Register a new user
 export const registerUser = async (username, email, password) => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(username);
-    console.log(email);
-    console.log(hashedPassword);
     const [result] = await pool.query(
         'INSERT INTO auth_users (username, email, password) VALUES (?, ?, ?)',
         [username, email, hashedPassword]

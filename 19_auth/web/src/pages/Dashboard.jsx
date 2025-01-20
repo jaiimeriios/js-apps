@@ -11,7 +11,6 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch the current quote of the user
         const fetchQuote = async () => {
             try {
                 const response = await fetch(`${URL}/quotes`, {
