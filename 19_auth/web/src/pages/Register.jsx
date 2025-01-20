@@ -33,6 +33,8 @@ const Register = () => {
 
                 const loginData = await loginResponse.json();
 
+                console.log(loginData)
+
                 if (loginResponse.ok) {
                     login(loginData.token, loginData.user);
                     navigate('/dashboard');

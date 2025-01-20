@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
     const login = (token, user) => {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('user', JSON.stringify(user))
         setAuthState({ isAuthenticated: true, user, token });
     };
 
@@ -37,6 +39,8 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        sessionStorage.removeItem('token', token)
+        sessionStorage.removeItem('user', JSON.stringify(user))
         setAuthState({ isAuthenticated: false, user: null, token: null });
     };
 

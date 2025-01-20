@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import QuoteForm from '../components/QuoteForm';
+import { useQuote } from '../context/QuoteContext';
 
 const Dashboard = () => {
     const URL = 'http://localhost:666';
-    const { authState, logout } = useAuth();
-    const [quote, setQuote] = useState('');
-    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { authState, logout } = useAuth();
+    const { quote, updateQuote } = useQuote();
 
     useEffect(() => {
         const fetchQuote = async () => {
@@ -23,20 +23,19 @@ const Dashboard = () => {
                 });
 
                 const data = await response.json();
-                const latestQuote = data.reverse()
+                const latestQuote = data.reverse();
 
                 if (response.ok) {
-                    setQuote(latestQuote[0].quote);
+                    updateQuote(latestQuote[0].quote);
                 } else {
-                    setError(data.error || 'Failed to fetch quote');
+                    console.log('Failed to fetch quote');
                 }
             } catch (error) {
-                setError('An error occurred while fetching your quote');
+                console.log(error);
             }
         };
-
         fetchQuote();
-    }, [authState.token]);
+    }, [authState]);
 
     const handleLogOut = () => {
         logout();
