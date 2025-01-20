@@ -16,18 +16,19 @@ const QuoteForm = () => {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${authState.token}`,
                 },
+                credentials: 'include',
                 body: JSON.stringify({ quote }),
             });
 
             const data = await response.json();
-
+            
             if (response.ok) {
-                alert('Quote updated successfully!');
+                console.log('Quote updated successfully!');
             } else {
-                alert(data.error || 'Failed to update quote');
+                console.log(data.error || 'Failed to update quote');
             }
         } catch (error) {
-            alert('An error occurred while updating the quote');
+            console.log('An error occurred while updating the quote');
         }
     };
 

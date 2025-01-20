@@ -31,14 +31,17 @@ export const login = async (req, res) => {
         const token = jwt.sign(
             { userId: user.id, role: user.role },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '1d' }
         );
-        console.log(user)
         // Send token as a cookie
-        res.cookie('token', token, { httpOnly: true }).json({
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: 'developent',
+            sameSite: 'None',
+        }).json({
             message: 'Login successful',
             token,
-            user
+            user,
         });
     } catch (err) {
         console.log(err);
@@ -49,7 +52,6 @@ export const login = async (req, res) => {
 // Middleware to protect routes (only accessible by authenticated users)
 export const protectRoute = async (req, res, next) => {
     const token = req.cookies.token;
-
     if (!token)
         return res
             .status(401)

@@ -15,15 +15,19 @@ const Dashboard = () => {
         const fetchQuote = async () => {
             try {
                 const response = await fetch(`${URL}/quotes`, {
+                    method: 'GET',
                     headers: {
                         Authorization: `Bearer ${authState.token}`,
+                        'Content-Type': 'application/json',
                     },
+                    credentials: 'include',
                 });
 
                 const data = await response.json();
+                const latestQuote = data.reverse()
 
                 if (response.ok) {
-                    setQuote(data.quote);
+                    setQuote(latestQuote[0].quote);
                 } else {
                     setError(data.error || 'Failed to fetch quote');
                 }
@@ -36,10 +40,9 @@ const Dashboard = () => {
     }, [authState.token]);
 
     const handleLogOut = () => {
-        console.log('log out')
-        logout()
+        logout();
         navigate('/');
-    }
+    };
 
     return (
         <div>
