@@ -15,6 +15,9 @@ export const useAuthContext = () => {
 
 // CONTEXTPROVIDER
 export const AuthContextProvider = ({ children }) => {
+
+    const URL = 'http://localhost:666'
+
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -26,7 +29,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('http://localhost:666/login', {
+            const response = await fetch(`${URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -59,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, URL }}>
             {children}
         </AuthContext.Provider>
     );

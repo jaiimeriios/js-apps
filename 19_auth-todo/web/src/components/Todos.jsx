@@ -1,18 +1,18 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuthContext } from '../context/AuthContext';
+import Logout from './Logout';
+import TodosAdd from './TodosAdd';
 
 const Todos = () => {
-    const { user } = useAuthContext();
+    const { user, URL } = useAuthContext();
     const navigate = useNavigate();
     const [todos, setTodos] = useState([]);
-
-    console.log(user.user);
 
     useEffect(() => {
         const fetchTodos = async () => {
             try {
-                const response = await fetch('http://localhost:666/todos', {
+                const response = await fetch(`${URL}/todos`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${user.token}`,
@@ -43,9 +43,14 @@ const Todos = () => {
     return (
         <div className="container">
             <h2>Todo List</h2>
+            <h3>{user.user.username}</h3>
+            <Logout />
+
+            
+            <TodosAdd />
             <ul>
-                {todos.map((todo) => (
-                    <li key={todo.id}>{todo.title}</li>
+                {todos.map((todo, i) => (
+                    <li key={`todo-${i}`}>{todo.todo}</li>
                 ))}
             </ul>
         </div>
