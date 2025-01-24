@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useTodoContext } from '../context/TodosContext';
 
 const TodosAdd = () => {
-    const [newTodo, setNewTodo] = useState('');
     const { addTodo } = useTodoContext();
+    const [newTodo, setNewTodo] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();

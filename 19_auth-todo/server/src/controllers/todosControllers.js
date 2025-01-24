@@ -32,7 +32,7 @@ export const updateTodo = async (req, res) => {
     authenticateToken(req, res);
     try {
         const result = await updateTodos(req.body.todo, req.params.id);
-        res.status(201).json(result);
+        res.status(201).json(req.body.todo);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error updating todo' });

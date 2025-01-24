@@ -1,27 +1,24 @@
 import { useAuthContext } from '../context/AuthContext';
-import { useTodoContext } from '../context/TodosContext';
-
 import Logout from '../components/Logout';
 import TodosAdd from '../components/TodosAdd';
+import TodosList from '../components/TodosList';
+import { useTodoContext } from '../context/TodosContext';
 
 const Todos = () => {
     const { user } = useAuthContext();
-    const { todos, setTodos, loading, error } = useTodoContext();
-
+    const { loading, error } = useTodoContext();
     return (
-        <div className="container">
+        <>
             <h2>Todo List</h2>
             <h3>{user.user.username}</h3>
             <Logout />
-
             <TodosAdd />
 
-            <ul>
-                {todos.map((todo, i) => (
-                    <li key={`todo-${i}`}>{todo.todo}</li>
-                ))}
-            </ul>
-        </div>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+
+            <TodosList />
+        </>
     );
 };
 
