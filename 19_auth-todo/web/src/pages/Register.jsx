@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useAuthContext } from '../context/AuthContext';
 
 const Register = () => {
+    const { URL } = useAuthContext();
+
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -10,7 +13,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:666/register', {
+            const response = await fetch(`${URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

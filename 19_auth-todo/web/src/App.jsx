@@ -1,35 +1,31 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { AuthContextProvider } from './context/AuthContext';
+import { TodoContextProvider } from './context/TodosContext';
 
-import Login from './components/Login';
-import Todos from './components/Todos';
-import Register from './components/Register';
 import Nav from './components/Nav';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Todos from './pages/Todos';
 
 const App = () => {
     return (
         <>
             <AuthContextProvider>
-                <BrowserRouter>
+                <TodoContextProvider>
+                    <BrowserRouter>
                         <Nav />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register /> } />
-                        <Route path="/todos" element={<Todos />} />
-                    </Routes>
-                </BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/todos" element={<Todos />} />
+                        </Routes>
+                    </BrowserRouter>
+                </TodoContextProvider>
             </AuthContextProvider>
         </>
     );
 };
 
 export default App;
-
-const Home = () => {
-    return (
-        <>
-            <h1>Home Page</h1>
-        </>
-    );
-};

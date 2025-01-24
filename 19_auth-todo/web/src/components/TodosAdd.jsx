@@ -1,35 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useAuthContext } from '../context/AuthContext';
+import { useTodoContext } from '../context/TodosContext';
 
 const TodosAdd = () => {
-    const [todo, setTodo] = useState('');
-    const { user, URL } = useAuthContext();
-    const navigate = useNavigate();
+    const [newTodo, setNewTodo] = useState('');
+    const { addTodo } = useTodoContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch(`${URL}/todos`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user.token}`,
-                },
-                body: JSON.stringify({ todo }),
-                credentials: 'include',
-            });
-
-            if (response.ok) {
-                // navigate('/todos');
-            } else {
-                console.error('Error adding todo');
-                // Handle error (e.g., display an error message)
-            }
-        } catch (error) {
-            console.error(error);
-            // Handle error (e.g., display an error message)
-        }
+        addTodo(newTodo);
+        setNewTodo('');
     };
 
     return (
@@ -41,8 +20,8 @@ const TodosAdd = () => {
                     <input
                         type="text"
                         id="title"
-                        value={todo}
-                        onChange={(e) => setTodo(e.target.value)}
+                        value={newTodo}
+                        onChange={(e) => setNewTodo(e.target.value)}
                         required
                     />
                 </div>
