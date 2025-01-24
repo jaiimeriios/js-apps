@@ -43,3 +43,35 @@ export const postTodos = async (user_id, todo) => {
     );
     return result;
 };
+
+export const updateTodos = async (newTodo, todo_id) => {
+    const result = pool.query(
+        'UPDATE auth_todos SET todo = ? WHERE id = ?',
+        [newTodo, todo_id],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ message: 'Error updating todo' });
+            } else {
+                res.json({ message: 'Todo updated successfully' });
+            }
+        }
+    );
+    return result;
+};
+
+export const deleteTodos = async (todo_id) => {
+    const result = pool.query(
+        'DELETE FROM auth_todos WHERE id = ?',
+        [todo_id],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ message: 'Error deleting todo' });
+            } else {
+                res.sendStatus(204); // No content
+            }
+        }
+    );
+    return result;
+};
