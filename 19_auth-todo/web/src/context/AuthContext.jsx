@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
                 // };
                 setUser(data);
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', JSON.stringify(data.user));
             } else {
                 throw new Error('Invalid credentials');
             }
